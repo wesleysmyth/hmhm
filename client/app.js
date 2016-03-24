@@ -1,0 +1,1 @@
+var store = require("./store");
