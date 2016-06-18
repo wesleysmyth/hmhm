@@ -1,6 +1,6 @@
 const { combineReducers } = require("redux");
-const firstReducer = require("./first");
+const programmingReducer = require("./programming");
 
 module.exports = combineReducers({
-    firstReducer
+    programming: programmingReducer
 });

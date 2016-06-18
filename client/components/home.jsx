@@ -3,7 +3,12 @@ const { Component } = React;
 class Home extends Component {
     render() {
         console.log("we're rendering home");
-        return <div>This is the home page</div>;
+        return (
+            <div>
+                <span>This is the home page</span>
+                <a href="#/programming">Go to the programming page</a>
+            </div>
+        );
     }
 };
 
