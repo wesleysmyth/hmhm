@@ -3,13 +3,14 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
 var source = require("vinyl-source-stream");
+var handleErrors = require("./handleErrors");
 
 gulp.task("browserify", function() {
     var opts = {
         // Required watchify args
         cache: {}, packageCache: {},
         // Specify the entry point of your app
-        entries: [ "./client/app.js" ],
+        entries: [ "./client/app.jsx" ],
         // Add file extentions to make optional in your requires
         extensions: [ ".js", ".jsx" ],
         // Enable source maps!
@@ -22,6 +23,7 @@ gulp.task("browserify", function() {
     var bundle = function() {
         return bundler
             .bundle()
+            .on("error", handleErrors)
             .pipe(source("index.js"))
             .pipe(gulp.dest("./dist/"));
     };

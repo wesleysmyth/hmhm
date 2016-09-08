@@ -1,12 +1,10 @@
-const { Component } = React;
+import React, { Component } from "react";
 const videojs = require("video.js");
 
 class Programming extends Component {
 
     render() {
-        console.log("we're rendering Programming");
         // const { program } = this.props;
-        // console.log("program", program)
         return (
             <div>
                 <h1>This is the programming page</h1>
@@ -18,7 +16,6 @@ class Programming extends Component {
     componentDidMount() {
         console.log("mounted")
         // const { addPlayer } = this.props;
-
         // addPlayer("really-cool-video");
     }
 

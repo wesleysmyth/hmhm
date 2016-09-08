@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "extends": "idiomatic",
+  "rules": {
+    "comma-dangle": 0,
+    "indent": [ 2, 4 ],
+    "space-in-parens": 0,
+    "quotes": [2, "double", "avoid-escape"],
+    "one-var": 0,
+    "func-names": 0,
+    "space-before-function-paren": 0,
+    "vars-on-top": 0,
+    "no-inline-comments": 0,
+    "max-depth": [2, 10],
+    "max-nested-callbacks": [2, 3],
+    "no-invalid-this": 0,
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "jasmine": true,
+    "worker": true
+  }
+}
