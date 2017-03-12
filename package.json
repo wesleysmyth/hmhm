@@ -4,9 +4,9 @@
   "description": "half man half machine",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
-    "watch": "gulp watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "NODE_ENV='production' webpack",
+    "watch": "NODE_ENV='development' webpack-dev-server --config ./webpack.config.js --host localhost.symphony.com --hot --inline --progress --history-api-fallback",
+    "watch-devtools": "NODE_ENV='development' DEVTOOLS_ENABLED='true' webpack-dev-server --config ./webpack.config.js --host localhost.symphony.com --hot --inline --progress --history-api-fallback"
   },
   "repository": {
     "type": "git",
@@ -31,16 +31,35 @@
     "video.js": "^5.8.0"
   },
   "devDependencies": {
+    "babel-core": "^6.22.1",
     "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-istanbul": "^3.1.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.22.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.22.0",
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
+    "css-loader": "^0.26.4",
     "eslint": "^3.4.0",
     "eslint-config-idiomatic": "^2.1.0",
+    "eslint-loader": "^1.6.3",
+    "file-loader": "^0.10.1",
     "gulp-notify": "^2.2.0",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.2.0",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
     "require-dir": "^0.3.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.13.2",
+    "uglifyjs-webpack-plugin": "^0.3.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   }
 }

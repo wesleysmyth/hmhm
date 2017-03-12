@@ -21,7 +21,7 @@ class Home extends Component {
                 <aside className="control--sound">TURN OFF SOUND</aside>
                 <aside className="control--theater">THEATER MODE</aside>
                 <main className="home__player">
-                    <video id="home__player--video" src={videoSrc}>
+                    <video id="home__player--video" src={videoSrc} /*autoPlay*/>
                     </video>
                 </main>
                 <footer className="home__footer">
