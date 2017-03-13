@@ -1,6 +1,6 @@
 const { combineReducers } = require("redux");
 const homeReducer = require("./home");
 
-module.exports = combineReducers({
+module.exports = {
     home: homeReducer,
-});
+};

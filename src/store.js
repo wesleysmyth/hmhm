@@ -1,19 +1,28 @@
-const { createStore, applyMiddleware, compose } = require("redux");
-const ReduxPromise = require("redux-promise-middleware");
-const rootReducer = require("./reducers");
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import ReduxPromise from "redux-promise-middleware";
+import { routerReducer } from "react-router-redux"
+const ReduxThunk = require("redux-thunk")[ "default" ];
+const reducers = require("./reducers");
 let createStoreWithMiddleware;
 
-// if (process.env.DEVTOOLS_ENABLED) {
-//     createStoreWithMiddleware = compose(
-//         applyMiddleware(ReduxPromise()),
-//         window.DevTools.instrument()
-//     )(createStore);
-// } else {
+if (process.env.DEVTOOLS_ENABLED) {
+    require("../devtools/containers/devtools.jsx");
     createStoreWithMiddleware = compose(
-        applyMiddleware(ReduxPromise())
+        applyMiddleware(ReduxPromise(), ReduxThunk),
+        window.DevTools.instrument()
     )(createStore);
-// }
+} else {
+    createStoreWithMiddleware = compose(
+        applyMiddleware(ReduxPromise(), ReduxThunk)
+    )(createStore);
+}
 
-const store = createStoreWithMiddleware(rootReducer);
+// Add the reducer to your store on the `routing` key
+const store = createStoreWithMiddleware(
+    combineReducers({
+        ...reducers,
+        routing: routerReducer
+    })
+);
 
 module.exports = store;

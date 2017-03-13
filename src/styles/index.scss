@@ -1,0 +1,63 @@
+html {
+    background-color: #fff;
+    color: #000;
+}
+
+.home__header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+}
+
+.home__controls {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    width: 40px;
+
+    .home__controls--control {
+        transform: rotate(180deg);
+        white-space: nowrap;
+        color: red;
+        writing-mode: tb-rl;
+    }
+
+    .pipe {
+        transform: rotate(180deg);
+        white-space: nowrap;
+        color: red;
+        writing-mode: tb-rl;
+        margin: auto 16px;
+    }
+}
+
+.home__player {
+    position: absolute;
+    left: 40px;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+}
+
+.home__player--video {
+    display: inline;
+
+    & > :not(video) {
+        display: none;
+    }
+
+    video {
+        display: block;
+        margin: 0 auto;
+        max-width: 95%;
+        max-height: calc(100vh - 200px) !important;
+
+        & * {
+            transition: transform 2s;
+        }
+    }
+}

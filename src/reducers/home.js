@@ -3,13 +3,16 @@ module.exports = (state = {}, action) => {
     switch (action.type) {
 
     case "ADD_PLAYER":
-        return Object.assign({}, state, { playerId: action.id });
+        return { ...state, playerId: action.id };
 
     case "FETCH_META":
-        return Object.assign({}, state, { metaId: action.id });
+        return { ...state, metaId: action.id };
 
     case "FETCH_VIDEO":
-        return Object.assign({}, state, { videoSrc: action.id });
+        return { ...state, currentVideo: action.video };
+
+    case "SET_CURRENT_VIDEO_PLAYER":
+        return { ...state, currentVideoPlayer: action.video };
 
     default:
         return state;
