@@ -75,13 +75,13 @@ video.fullscreen::-webkit-media-controls-enclosure {
 }
 
 .home__player--video-container {
-    display: block;
     margin: 0 auto;
 }
 
 .home__player--video {
     cursor: pointer;
     width: 100%;
+    margin-top: 80px;
 }
 
 .home__footer {

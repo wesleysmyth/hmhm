@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "install": "NODE_ENV='production' webpack",
-    "watch": "NODE_ENV='development' webpack-dev-server --config ./webpack.config.js --host localhost.symphony.com --hot --inline --progress --history-api-fallback",
-    "watch-devtools": "NODE_ENV='development' DEVTOOLS_ENABLED='true' webpack-dev-server --config ./webpack.config.js --host localhost.symphony.com --hot --inline --progress --history-api-fallback"
+    "watch": "NODE_ENV='development' webpack-dev-server --config ./webpack.config.js --host localhost --hot --inline --progress --history-api-fallback",
+    "watch-devtools": "NODE_ENV='development' DEVTOOLS_ENABLED='true' webpack-dev-server --config ./webpack.config.js --host localhost --hot --inline --progress --history-api-fallback"
   },
   "repository": {
     "type": "git",
