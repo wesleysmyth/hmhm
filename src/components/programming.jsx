@@ -14,7 +14,6 @@ class Programming extends Component {
     }
 
     componentDidMount() {
-        console.log("mounted")
         // const { addPlayer } = this.props;
         // addPlayer("really-cool-video");
     }
