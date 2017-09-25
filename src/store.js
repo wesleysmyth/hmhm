@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import ReduxPromise from "redux-promise-middleware";
 import { routerReducer } from "react-router-redux"
-const ReduxThunk = require("redux-thunk")[ "default" ];
-const reducers = require("./reducers");
+import ReduxThunk from "redux-thunk";
+import reducers from "./reducers";
 let createStoreWithMiddleware;
 
 if (process.env.DEVTOOLS_ENABLED) {

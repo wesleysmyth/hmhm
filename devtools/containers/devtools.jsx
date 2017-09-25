@@ -1,6 +1,6 @@
 const React = require("react");
 const { createDevTools } = require("redux-devtools");
-const LogMonitor = require("redux-devtools-log-monitor").default;
+import LogMonitor from "redux-devtools-log-monitor";
 const DockMonitor = require("redux-devtools-dock-monitor").default;
 let theme = "solarized";
 

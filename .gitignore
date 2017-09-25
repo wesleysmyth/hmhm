@@ -31,3 +31,7 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+#Added by Wes
+.DS_Store
+*bundle.js*
