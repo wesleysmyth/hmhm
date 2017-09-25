@@ -35,3 +35,4 @@ node_modules
 #Added by Wes
 .DS_Store
 *bundle.js*
+package-lock.json
