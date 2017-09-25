@@ -1,0 +1,28 @@
+.video-library__videos {
+    display: flex;
+    flex-wrap: wrap;
+
+    .video-library__videos--video {
+        display: flex;
+        flex-direction: column;
+        width: 31%;
+        height: 100%;
+        margin: 0 1%;
+
+        .loading {
+            width: 50px;
+            margin: 30px auto;
+        }
+
+        .video-library__videos--video-title {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .video-library__videos--video-img {
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+
+}

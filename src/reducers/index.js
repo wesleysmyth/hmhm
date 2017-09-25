@@ -1,6 +1,8 @@
-const { combineReducers } = require("redux");
-const homeReducer = require("./home");
+import { combineReducers } from "redux";
+import playerReducer from "./player";
+import videosReducer from "./videos";
 
-module.exports = {
-    home: homeReducer,
+export default {
+    player: playerReducer,
+    videos: videosReducer
 };

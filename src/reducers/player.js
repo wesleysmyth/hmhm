@@ -1,7 +1,7 @@
-module.exports = (state = {}, action) => {
+import videos from "../data/videos";
 
+export default function homeReducer(state = {}, action) {
     switch (action.type) {
-
     case "ADD_PLAYER":
         return { ...state, playerId: action.id };
 
@@ -9,7 +9,7 @@ module.exports = (state = {}, action) => {
         return { ...state, metaId: action.id };
 
     case "FETCH_VIDEO":
-        return { ...state, currentVideo: action.video };
+        return { ...state, currentVideo: videos[ action.id ] };
 
     case "SET_CURRENT_VIDEO_PLAYER":
         return { ...state, currentVideoPlayer: action.video };
@@ -17,4 +17,4 @@ module.exports = (state = {}, action) => {
     default:
         return state;
     }
-};
+}

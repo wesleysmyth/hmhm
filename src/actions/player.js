@@ -12,10 +12,10 @@ export const fetchMeta = id => {
     };
 };
 
-export const fetchVideo = video => {
+export const fetchVideo = id => {
     return {
         type: "FETCH_VIDEO",
-        video,
+        id,
     };
 };
 
