@@ -9,7 +9,8 @@ export default function homeReducer(state = {}, action) {
         return { ...state, metaId: action.id };
 
     case "FETCH_VIDEO":
-        return { ...state, currentVideo: videos[ action.id ] };
+        const currentVideo = videos.find(video => video.id === action.id);
+        return { ...state, currentVideo };
 
     case "SET_CURRENT_VIDEO_PLAYER":
         return { ...state, currentVideoPlayer: action.video };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
+import md5 from "md5";
 
 export default class Library extends Component {
 
@@ -28,8 +29,7 @@ export default class Library extends Component {
         const imgLoaded = img.complete && img.naturalWidth !== 0;
 
         if (imgLoaded) {
-            const id = img.id.slice(-1);
-            const loader = document.getElementById(`loading ${id}`);
+            const loader = document.getElementById(`loading ${img.id}`);
             img.style.display = "block";
             loader.style.display = "none";
         } else {
@@ -43,12 +43,13 @@ export default class Library extends Component {
         return (
             <div className={`${type}-library__${type}s`}>
                 {items.map((item, index) => {
-                    const { imgSrc, imgAlt, title, id, urlHash } = item;
+                    const { imgSrc, imgAlt, title, id } = item;
+                    const uniqueId = id + index;
 
                     return (
                         <div className={`${type}-library__${type}s--${type}`} key={index}>
-                            <img id={`loading ${id}`} className="loading" src="/src/images/Eclipse.svg" />
-                            <img id={`item ${id}`} className={`${type}-library__${type}s--${type}-img`} src={imgSrc} alt={imgAlt} onClick={this.showVideo.bind(this, id)} />
+                            <img id={`loading ${uniqueId}`} className="loading" src="/src/images/Eclipse.svg" />
+                            <img id={uniqueId} className={`${type}-library__${type}s--${type}-img`} src={imgSrc} alt={imgAlt} onClick={this.showVideo.bind(this, id)} />
                             <h4 className={`${type}-library__${type}s--${type}-title`} onClick={this.showVideo.bind(this, id)}>{title}</h4>
                         </div>
                     );

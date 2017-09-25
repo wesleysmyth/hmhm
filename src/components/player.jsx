@@ -60,10 +60,10 @@ export default class Player extends Component {
 
     componentDidMount() {
         const { fetchMeta, fetchVideo, params } = this.props;
-        const videoId = parseInt(_get(params, "id", 0), 10);
+        const videoId = _get(params, "id", 0);
         const video = this.getVideo();
 
-        fetchVideo(videoId || 6);
+        fetchVideo(videoId);
         this.hideElement(video);
         video.addEventListener("loadeddata", this.videoIsReady.bind(this, video));
     }

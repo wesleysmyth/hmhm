@@ -1,4 +1,4 @@
-import Crypto from "crypto-js";
+import md5 from "md5";
 
 const videos = [
     {
@@ -80,9 +80,8 @@ const videos = [
             "line sixteen",
         ]
     }
-].map((video, index) => {
-    video.id = index;
-    video.urlHash = Crypto.AES.encrypt(video.title, video.src);
+].map(video => {
+    video.id = md5(video.src);
     return video;
 });
 
