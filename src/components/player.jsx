@@ -60,12 +60,13 @@ export default class Player extends Component {
 
     componentDidMount() {
         const { fetchMeta, fetchVideo, params } = this.props;
-        const videoId = _get(params, "id", 0);
+        const videoId = _get(params, "id", videos[ 0 ].id);
         const video = this.getVideo();
 
         fetchVideo(videoId);
         this.hideElement(video);
         video.addEventListener("loadeddata", this.videoIsReady.bind(this, video));
+        video.addEventListener("error", this.videoError.bind(this, video));
     }
 
     hideElement(element) {
@@ -84,6 +85,17 @@ export default class Player extends Component {
             video.style.display = "inline-block";
             data.style.display = "block";
         }
+    }
+
+    videoError(video) {
+        const loading = document.querySelector(".loading");
+        const container = document.querySelector(".player--video-container");
+        const error = document.createElement("h5");
+        error.className = "player--video-error";
+        error.innerText = "There was an error loading the video";
+
+        this.hideElement(loading);
+        container.appendChild(error);
     }
 
     getVideo() {

@@ -26,3 +26,25 @@
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+/* Move it (define the animation) */
+@-moz-keyframes scrollText {
+    0%   { -moz-transform: translateY(100%); }
+    100% { -moz-transform: translateY(-800%); }
+}
+@-webkit-keyframes scrollText {
+    0%   { -webkit-transform: translateY(100%); }
+    100% { -webkit-transform: translateY(-800%); }
+}
+@keyframes scrollText {
+    0%   {
+         -moz-transform: translateY(100%); /* Firefox bug fix */
+         -webkit-transform: translateY(100%); /* Firefox bug fix */
+         transform: translateY(100%);
+    }
+    100% {
+        -moz-transform: translateY(-800%); /* Firefox bug fix */
+        -webkit-transform: translateY(-800%); /* Firefox bug fix */
+        transform: translateY(-800%);
+    }
+}

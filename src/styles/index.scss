@@ -2,6 +2,7 @@
 @import "./videos.scss";
 @import "./colors.scss";
 @import "./mixins.scss";
+@import "./animations.scss";
 
 html {
     background-color: $black;
@@ -45,6 +46,7 @@ video::-webkit-media-controls-panel {
 
     .home__title {
         margin-top: 15px;
+        cursor: pointer;
     }
 
     .menu {
@@ -121,6 +123,12 @@ video::-webkit-media-controls-panel {
     width: 100%;
 }
 
+.player--video-error {
+    display: block;
+    margin: 100px auto;
+    @include fadeIn(5s);
+}
+
 .player__footer {
     display: flex;
     background-color: black;
@@ -149,26 +157,3 @@ video::-webkit-media-controls-panel {
      -webkit-animation: scrollText 55s linear infinite;
      animation: scrollText 55s linear infinite;
 }
-
-/* Move it (define the animation) */
-@-moz-keyframes scrollText {
-    0%   { -moz-transform: translateY(100%); }
-    100% { -moz-transform: translateY(-800%); }
-}
-@-webkit-keyframes scrollText {
-    0%   { -webkit-transform: translateY(100%); }
-    100% { -webkit-transform: translateY(-800%); }
-}
-@keyframes scrollText {
-    0%   {
-         -moz-transform: translateY(100%); /* Firefox bug fix */
-         -webkit-transform: translateY(100%); /* Firefox bug fix */
-         transform: translateY(100%);      
-    }
-    100% { 
-        -moz-transform: translateY(-800%); /* Firefox bug fix */
-        -webkit-transform: translateY(-800%); /* Firefox bug fix */
-        transform: translateY(-800%);
-    }
-}
-

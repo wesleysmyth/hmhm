@@ -31,7 +31,10 @@ export default class Library extends Component {
         if (imgLoaded) {
             const loader = document.getElementById(`loading ${img.id}`);
             img.style.display = "block";
-            loader.style.display = "none";
+
+            if (loader) {
+                loader.style.display = "none";
+            }
         } else {
             setTimeout(this.checkImgLoad.bind(this, img), 200);
         }
