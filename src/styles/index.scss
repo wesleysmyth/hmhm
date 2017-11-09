@@ -23,6 +23,12 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+a {
+    &:link, &:visited {
+        color: #fff;
+    }
+}
+
 .loading {
     width: 100px;
     margin: 60px auto;
@@ -59,22 +65,6 @@ video::-webkit-media-controls-panel {
     }
 }
 
-
-.player__data {
-    display: none;
-    @include fadeIn(2s);
-}
-
-.player__controls {
-    margin: 10px 0;
-    font-size: 12px;
-
-    .player__controls--control {
-        cursor: pointer;
-        white-space: nowrap;
-    }
-}
-
 .pipe {
     margin: 0 10px;
 }
@@ -88,7 +78,6 @@ video::-webkit-media-controls-panel {
     min-height: 205px;
     width: 110px;
     padding: 20px;
-    // background-color: rgba(255, 255, 255, 0.9);
     background-color: rgba(255, 255, 255, 0.2);
     text-align: center;
     border-radius: 1px;
@@ -113,9 +102,8 @@ video::-webkit-media-controls-panel {
 }
 
 .player--video-container {
-    display: grid;
-    margin: 0 auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .player--video {
@@ -127,6 +115,22 @@ video::-webkit-media-controls-panel {
     display: block;
     margin: 100px auto;
     @include fadeIn(5s);
+}
+
+.player__data {
+    display: none;
+    margin-top: 20px;
+    @include fadeIn(2s);
+}
+
+.player__controls {
+    margin: 10px 0;
+    font-size: 12px;
+
+    .player__controls--control {
+        cursor: pointer;
+        white-space: nowrap;
+    }
 }
 
 .player__footer {
@@ -147,13 +151,13 @@ video::-webkit-media-controls-panel {
 
 .player__footer__subconcious-text--line {
     display: block;
-    white-space: nowrap;
+    // white-space: nowrap;
      /* Starting position */
-     -moz-transform:translateY(100%);
-     -webkit-transform:translateY(100%);   
-     transform:translateY(100%);
-     /* Apply animation to this element */  
-     -moz-animation: scrollText 55s linear infinite;
-     -webkit-animation: scrollText 55s linear infinite;
-     animation: scrollText 55s linear infinite;
+     // -moz-transform:translateY(100%);
+     // -webkit-transform:translateY(100%);
+     // transform:translateY(100%);
+     // /* Apply animation to this element */
+     // -moz-animation: scrollText 55s linear infinite;
+     // -webkit-animation: scrollText 55s linear infinite;
+     // animation: scrollText 55s linear infinite;
 }

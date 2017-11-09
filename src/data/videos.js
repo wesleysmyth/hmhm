@@ -18,10 +18,67 @@ const videos = [
         }],
     },
     {
-        src: "",
+        src: "http://wes.is/h.mov",
         title: "Another Title",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 3",
+        chapters: [
+            {
+                endTime: 6,
+                title: "HALFMANHALFMACHINE 001 : COPYRIGHT INFRINGEMENT",
+                text: "Halfmanhalfmachine // death + time http://www.google.com // the space between https://www.youtube.com/watch?v=SsWsmH2d_Qg life and death // the thoughts behind http://www.wes.is  fdsafdsa ll"
+            },
+            {
+                endTime: 10,
+                title: "( Apteka ) Episode 001 : Starring Elle Kaye Dawson  @ellekayedawson",
+                text: "There are ghosts in the studio , possibly, she thinks so"
+            },
+            {
+                endTime: 15,
+                title: "(The Big Balloon) feature remixed / for the performance by @royacarreras",
+                text: "Based on the work of Roya Carreras. Feat. Caitlin Taylor, Elise Ritzel, Eloise DeLuca. Movement by Roya Carreras"
+            },
+            {
+                endTime: 21,
+                title: "@devathediva",
+                text: "Deva"
+            },
+            {
+                endTime: 23,
+                title: "Julia Cumming x Hanna Rundlof from the first HMHM recording",
+                text: "From year one of HMHM @juliacumming @sunflowerbean @hannarundlof - thank u x"
+            },
+            {
+                endTime: 27,
+                title: "Orson Welles is Speaking 2 you",
+                text: "F is for Fake / The Mercury Theater"
+            },
+            {
+                endTime: 34,
+                title: "Anne Murray",
+                text: "Importance of audio , audio memory, you can remember the feelings that way"
+            },
+            {
+                endTime: 35,
+                title: "Godard film x  FKA Twigs",
+                text: "Film for FKA Twigs party Showgirls x Goddard"
+            },
+            {
+                endTime: 47,
+                title: "( Ice Cube ) Wicked",
+                text: "Ice Cube Wicked Epic Moments https://www.youtube.com/watch?v=SsWsmH2d_Qg"
+            },
+            {
+                endTime: 66,
+                title: "Kristy Ann Muniz",
+                text: "Prayer Hands // Prayer Hands // To Tape //"
+            },
+            {
+                endTime: 68,
+                title: "( The Beatnuts ) Reign of the Tec",
+                text: "https://www.youtube.com/watch?v=SXeypq9dWAA"
+            }
+        ]
     },
     {
         src: "",
@@ -56,29 +113,30 @@ const videos = [
         imgAlt: "Alt 7",
         chapters: [
             {
-                startTime: 43728910,
-                endTime: 47389012,
-                title: "fhdjsaklhfjdskahlfjd"
+                startTime: 0,
+                endTime: 6,
+                title: "HALFMANHALFMACHINE 001 : COPYRIGHT INFRINGEMENT",
+                text: "Halfmanhalfmachine // death + time // the space between life and death // the thoughts behind"
             }
         ],
-        subconciousText: [
-            "line one",
-            "line two",
-            "line threefdhjsakfhdjkslahfjkdlsahfjkldshajklfhdsjklahfdjklsahfjkldshafjkdlsahjkl",
-            "line four",
-            "line five",
-            "line six",
-            "line seven",
-            "line eight",
-            "line nine",
-            "line ten",
-            "line eleven",
-            "line twelve",
-            "line thirteen",
-            "line fourteen",
-            "line fifteen",
-            "line sixteen",
-        ]
+        // subconciousText: [
+        //     "line one",
+        //     "line two",
+        //     "line threefdhjsakfhdjkslahfjkdlsahfjkldshajklfhdsjklahfdjklsahfjkldshafjkdlsahjkl",
+        //     "line four",
+        //     "line five",
+        //     "line six",
+        //     "line seven",
+        //     "line eight",
+        //     "line nine",
+        //     "line ten",
+        //     "line eleven",
+        //     "line twelve",
+        //     "line thirteen",
+        //     "line fourteen",
+        //     "line fifteen",
+        //     "line sixteen",
+        // ]
     }
 ].map(video => {
     video.id = md5(video.src);

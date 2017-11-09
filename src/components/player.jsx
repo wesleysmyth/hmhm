@@ -12,12 +12,17 @@ export default class Player extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { registeredFullScreenListeners: false };
+        this.state = {
+            registeredFullScreenListeners: false,
+            currentChapter: 0
+        };
     }
 
     render() {
-        const { metaId, playerId, currentVideo } = this.props;
-        const subconciousText = currentVideo && currentVideo.subconciousText;
+        const { metaId, playerId, currentVideo, currentVideo: { chapters } } = this.props;
+        const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
+        const title = !chapters && currentVideo.title;
+        const subText = this.createSubText(currentChapter);
 
         return (
             <main className="player">
@@ -32,7 +37,7 @@ export default class Player extends Component {
                         onMouseLeave={this.toggleControls}
                         onClick={this.togglePlay}
                         src={currentVideo.src}>
-                    </video>                    
+                    </video>
                 </div>
                 <div className="player__data">
                     <div className="player__controls">
@@ -47,11 +52,9 @@ export default class Player extends Component {
                     <footer className="player__footer">
                         <div className="player__footer__meta">
                             {metaId}
-                            <h5>You are now watching : {currentVideo.title}</h5>
+                            <h5>You are now watching : {currentChapter ? currentChapter.title : currentVideo.title}</h5>
                         </div>
-                        <div className="player__footer__subconcious-text">
-                            {subconciousText && subconciousText.map((line, index) => <span key={index} className="player__footer__subconcious-text--line">{line}</span>)}
-                        </div>
+                        {subText}
                     </footer>
                 </div>
             </main>
@@ -60,13 +63,95 @@ export default class Player extends Component {
 
     componentDidMount() {
         const { fetchMeta, fetchVideo, params } = this.props;
-        const videoId = _get(params, "id", videos[ 0 ].id);
-        const video = this.getVideo();
+        const videoId = _get(params, "id", videos[ 2 ].id);
+        const video = this.getHTMLVideo();
 
         fetchVideo(videoId);
         this.hideElement(video);
         video.addEventListener("loadeddata", this.videoIsReady.bind(this, video));
         video.addEventListener("error", this.videoError.bind(this, video));
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { currentVideo } = this.props;
+
+        if (currentVideo.id !== nextProps.currentVideo.id) {
+            this.registerChapters(nextProps.currentVideo);
+        }
+    }
+
+    registerChapters(video) {
+        const { chapters } = video;
+        const htmlVideo = this.getHTMLVideo();
+
+        htmlVideo.addEventListener("timeupdate", () => {
+            const currentTime = parseInt(htmlVideo.currentTime, 10);
+
+            _.each(chapters, (chapter, index) => {
+                const prevChapter = chapters[ index - 1 ];
+                const startTime = prevChapter ? prevChapter.endTime : 0;
+                const endTime = chapter.endTime;
+                const currentChapterRange = currentTime > startTime && currentTime <= endTime;
+
+                if (currentChapterRange) {
+                    this.setState({ currentChapter: index });
+                }
+            });
+        });
+    }
+
+    /*
+     * This method determines if there are any links in the text (with http or https at the start)
+     * and renders anchor tags for those links
+     */
+    createSubText(currentChapter) {
+        let text = currentChapter && currentChapter.text;
+        let indexes = [];
+        let elements = [];
+
+        // find the indexes of the links
+        if (text) {
+            const re = /http/g;
+            let match;
+
+            while ((match = re.exec(text)) !== null) {
+                indexes.push(match.index);
+            }
+        }
+
+        // separate the text into distinct elements
+        if (indexes.length) {
+            elements.push(text.slice(0, indexes[ 0 ]));
+
+            indexes.forEach((index, i) => {
+                const endOfLinkIndex = text.indexOf(" ", index);
+                const link = text.slice(index, endOfLinkIndex);
+                const lastIndex = i === indexes.length - 1;
+
+                elements.push(link);
+
+                if (!lastIndex) {
+                    elements.push(text.slice(endOfLinkIndex, indexes[ i + 1 ]));
+                } else {
+                    elements.push(text.slice(endOfLinkIndex, text.length));
+                }
+
+            });
+        }
+
+        return (
+            <div className="player__footer__subconcious-text">
+                {elements.length ? elements.map((element, i) => {
+                    const isLink = element.match(/http/);
+
+                    if (isLink) {
+                        return <a key={i} href={element} target="_blank">{element}</a>;
+                    } else {
+                        return <span key={i}>{element}</span>;
+                    }
+                }) : text}
+            </div>
+        );
     }
 
     hideElement(element) {
@@ -98,14 +183,14 @@ export default class Player extends Component {
         container.appendChild(error);
     }
 
-    getVideo() {
+    getHTMLVideo() {
         const { currentVideo } = this.props;
         const video = document.querySelector(`#player--video${currentVideo.id}`);
         return video;
     }
 
     togglePlay() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
         const paused = video.paused;
 
         if (paused) {
@@ -116,7 +201,7 @@ export default class Player extends Component {
     }
 
     play() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
 
         if (video) {
             video.play();
@@ -124,7 +209,7 @@ export default class Player extends Component {
     }
 
     pause() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
 
         if (video) {
             video.pause();
@@ -132,7 +217,7 @@ export default class Player extends Component {
     }
 
     toggleSound() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
 
         if (video) {
             video.muted = !video.muted;
@@ -140,7 +225,7 @@ export default class Player extends Component {
     }
 
     showFullScreen() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
 
         if (video) {
 
@@ -166,7 +251,7 @@ export default class Player extends Component {
     }
 
     toggleFullScreenClass() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
         const classList = video.classList;
         const isFullScreen = classList.contains("fullscreen");
 
@@ -178,7 +263,7 @@ export default class Player extends Component {
     }
 
     toggleControls() {
-        const video = this.getVideo();
+        const video = this.getHTMLVideo();
         const currentVideoControls = video && video.getAttribute("controls");
 
         if (video) {
