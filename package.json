@@ -34,7 +34,7 @@
     "redux": "^3.3.1",
     "redux-promise-middleware": "^2.3.3",
     "redux-thunk": "^2.2.0",
-    "underscore": "^1.8.3",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
