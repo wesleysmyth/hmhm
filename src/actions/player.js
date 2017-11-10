@@ -18,10 +18,3 @@ export const fetchVideo = id => {
         id,
     };
 };
-
-export const setCurrentVideoPlayer = video => {
-    return {
-        type: "SET_CURRENT_VIDEO_PLAYER",
-        video
-    }
-}

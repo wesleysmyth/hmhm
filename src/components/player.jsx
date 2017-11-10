@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router";
 import _ from "underscore";
 import $ from "jquery";
 import _get from "lodash.get";
 import autobind from "autobind-decorator";
-import videoPlayer from "../videoPlayer";
 import videos from "../data/videos";
 
-@autobind
 export default class Player extends Component {
 
     constructor(props) {
@@ -189,6 +186,7 @@ export default class Player extends Component {
         return video;
     }
 
+    @autobind
     togglePlay() {
         const video = this.getHTMLVideo();
         const paused = video.paused;
@@ -216,6 +214,7 @@ export default class Player extends Component {
         }
     }
 
+    @autobind
     toggleSound() {
         const video = this.getHTMLVideo();
 
@@ -224,6 +223,7 @@ export default class Player extends Component {
         }
     }
 
+    @autobind
     showFullScreen() {
         const video = this.getHTMLVideo();
 
@@ -262,6 +262,7 @@ export default class Player extends Component {
         }
     }
 
+    @autobind
     toggleControls() {
         const video = this.getHTMLVideo();
         const currentVideoControls = video && video.getAttribute("controls");
