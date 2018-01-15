@@ -18,8 +18,12 @@ export default class Player extends Component {
     render() {
         const { metaId, playerId, currentVideo, currentVideo: { chapters } } = this.props;
         const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
-        const title = !chapters && currentVideo.title;
         const subText = this.createSubText(currentChapter);
+        const title = currentChapter ? currentChapter.title : currentVideo.title;
+        // const htmlVideo = this.getHTMLVideo();
+        // const duration = htmlVideo && htmlVideo.duration;
+        // const currentTime = htmlVideo && htmlVideo.currentTime;
+        // const remainingTime = duration && currentTime && duration - currentTime;
 
         return (
             <main className="player">
@@ -37,21 +41,19 @@ export default class Player extends Component {
                     </video>
                 </div>
                 <div className="player__data">
-                    <div className="player__controls">
-                        <span className="player__controls--control player__controls--play" onClick={this.play}>PLAY</span>
-                        <span className="pipe">|</span>
-                        <span className="player__controls--control player__controls--pause" onClick={this.pause}>PAUSE</span>
-                        <span className="pipe">|</span>
-                        <span className="player__controls--control player__controls--sound" onClick={this.toggleSound}>TOGGLE SOUND</span>
-                        <span className="pipe">|</span>
-                        <span className="player__controls--control player__controls--theater" onClick={this.showFullScreen}>THEATER MODE</span>
-                    </div>
                     <footer className="player__footer">
                         <div className="player__footer__meta">
                             {metaId}
-                            <h5>You are now watching : {currentChapter ? currentChapter.title : currentVideo.title}</h5>
+                            <h5 className="player__footer__meta--title">{title} :</h5>
+                            {/* <Timer currentTime={currentTime} /> */}
+                            {/*<Timer remaining={remainingTime}>
+                              <Countdown />
+                            </Timer>*/}
                         </div>
-                        {subText}
+                        <div className="player__footer--text">
+                            <img className="logo" src="/src/images/logos-02.png" />
+                            {subText}
+                        </div>
                     </footer>
                 </div>
             </main>
@@ -83,6 +85,7 @@ export default class Player extends Component {
 
         htmlVideo.addEventListener("timeupdate", () => {
             const currentTime = parseInt(htmlVideo.currentTime, 10);
+            this.setState({ currentTime });
 
             _.each(chapters, (chapter, index) => {
                 const prevChapter = chapters[ index - 1 ];
@@ -118,18 +121,26 @@ export default class Player extends Component {
 
         // separate the text into distinct elements
         if (indexes.length) {
-            elements.push(text.slice(0, indexes[ 0 ]));
+            const thing = text.slice(0, indexes[ 0 ]);
+            elements.push(thing);
 
             indexes.forEach((index, i) => {
-                const endOfLinkIndex = text.indexOf(" ", index);
-                const link = text.slice(index, endOfLinkIndex);
                 const lastIndex = i === indexes.length - 1;
+                const endOfLinkIndex = text.indexOf(" ", index);
+                const lastPhrase = endOfLinkIndex === -1;
+                let link;
+
+                if (lastPhrase) {
+                    link = text.slice(index);
+                } else {
+                    link = text.slice(index, endOfLinkIndex);
+                }
 
                 elements.push(link);
 
                 if (!lastIndex) {
                     elements.push(text.slice(endOfLinkIndex, indexes[ i + 1 ]));
-                } else {
+                } else if (!lastPhrase) {
                     elements.push(text.slice(endOfLinkIndex, text.length));
                 }
 
@@ -198,6 +209,7 @@ export default class Player extends Component {
         }
     }
 
+    @autobind
     play() {
         const video = this.getHTMLVideo();
 
@@ -206,59 +218,12 @@ export default class Player extends Component {
         }
     }
 
+    @autobind
     pause() {
         const video = this.getHTMLVideo();
 
         if (video) {
             video.pause();
-        }
-    }
-
-    @autobind
-    toggleSound() {
-        const video = this.getHTMLVideo();
-
-        if (video) {
-            video.muted = !video.muted;
-        }
-    }
-
-    @autobind
-    showFullScreen() {
-        const video = this.getHTMLVideo();
-
-        if (video) {
-
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.msRequestFullscreen) {
-                video.msRequestFullscreen();
-            } else if (video.mozRequestFullScreen) {
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen();
-            }
-
-            if (!this.state.registeredFullScreenListeners) {
-                video.addEventListener("fullscreenchange", this.toggleFullScreenClass.bind(this), false);
-                video.addEventListener("MSFullscreenChange", this.toggleFullScreenClass.bind(this), false);
-                video.addEventListener("mozfullscreenchange", this.toggleFullScreenClass.bind(this), false);
-                video.addEventListener("webkitfullscreenchange", this.toggleFullScreenClass.bind(this), false);
-                this.setState({ registeredFullScreenListeners: true });
-            }
-
-        }
-    }
-
-    toggleFullScreenClass() {
-        const video = this.getHTMLVideo();
-        const classList = video.classList;
-        const isFullScreen = classList.contains("fullscreen");
-
-        if (isFullScreen) {
-            classList.remove("fullscreen");
-        } else {
-            classList.add("fullscreen");
         }
     }
 

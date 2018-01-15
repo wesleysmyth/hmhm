@@ -101,11 +101,11 @@ var config = {
     }
 };
 
-if (process.env.NODE_ENV === "production") {
-    config.plugins.push(
-        new UglifyJSPlugin()
-    );
-}
+// if (process.env.NODE_ENV === "production") {
+//     config.plugins.push(
+//         new UglifyJSPlugin()
+//     );
+// }
 
 if (process.env.DEVTOOLS_ENABLED) {
     config.plugins.push(

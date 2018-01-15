@@ -21,7 +21,7 @@ export default class Home extends Component {
                 <header className="home__header">
                     <h2 className="home__title" onClick={this.goHome}>HALFMANHALFMACHINE</h2>
                     <div className="menu">
-                        <h4 className="menu--title">Menu</h4>
+                        <h4 className="menu--title">// MENU //</h4>
                     </div>
                 </header>
                 <aside className={`menu__dropdown ${dropdownClass}`}>

@@ -8,6 +8,7 @@ html {
     background-color: $black;
     color: $white;
     font-family: Menlo, "Helvetica Neue", sans-serif;
+    // font-family: sans-serif;
     text-transform: uppercase;
 }
 
@@ -25,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
     &:link, &:visited {
-        color: #fff;
+        color: $white;
     }
 }
 
@@ -41,6 +42,10 @@ video::-webkit-media-controls-panel {
     // opacity: 1 !important;
 }
 
+video::-internal-media-controls-download-button {
+    display: none;
+}
+
 .home__header {
     width: 100%;
     height: 60px;
@@ -53,6 +58,8 @@ video::-webkit-media-controls-panel {
     .home__title {
         margin-top: 15px;
         cursor: pointer;
+        font-size : 18px;
+        letter-spacing: 2px;
     }
 
     .menu {
@@ -61,12 +68,7 @@ video::-webkit-media-controls-panel {
 
     .menu--title {
         margin-top: 20px;
-        margin-right: 35px;
     }
-}
-
-.pipe {
-    margin: 0 10px;
 }
 
 .menu__dropdown {
@@ -123,41 +125,23 @@ video::-webkit-media-controls-panel {
     @include fadeIn(2s);
 }
 
-.player__controls {
-    margin: 10px 0;
-    font-size: 12px;
-
-    .player__controls--control {
-        cursor: pointer;
-        white-space: nowrap;
-    }
-}
-
 .player__footer {
-    display: flex;
     background-color: black;
     margin-bottom: 20px;
+    @include fadeIn(2s);
+}
 
-    & > div {
-        display: inline-block;
-        width: 50%;
+.player__footer--text {
+    display: flex;
+    margin-top: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    text-align: justify;
+    font-style: italic;
+    color: $light-blue;
+    text-transform: uppercase;
+
+    & a {
+        color: $white;
     }
-}
-
-.player__footer__subconcious-text {
-    height: 20vh;
-    overflow: auto;
-}
-
-.player__footer__subconcious-text--line {
-    display: block;
-    // white-space: nowrap;
-     /* Starting position */
-     // -moz-transform:translateY(100%);
-     // -webkit-transform:translateY(100%);
-     // transform:translateY(100%);
-     // /* Apply animation to this element */
-     // -moz-animation: scrollText 55s linear infinite;
-     // -webkit-animation: scrollText 55s linear infinite;
-     // animation: scrollText 55s linear infinite;
 }

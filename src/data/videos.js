@@ -4,18 +4,14 @@ const videos = [
     {
         src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/1607/8/208036501/710378441.mp4?token=58c5eb22_0xdfaed5cc298e843279287b464330a6cdb340f804",
         title: "Pre-Launch 001",
-        imgSrc: "https://unsplash.it/300/200?random",
+        imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
         imgAlt: "Alt 1",
     },
     {
         src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/755/8/203777141/692482461.mp4?token=58c5d4f7_0x4891d52c4b2e327cb5ec92a65c461e2b66c6f5d8",
         title: "Paper",
         imgSrc: "https://unsplash.it/300/200?random",
-        imgAlt: "Alt 2",
-        links: [{
-            src: "...url...",
-            title: "Instagram",
-        }],
+        imgAlt: "Alt 2"
     },
     {
         src: "http://wes.is/h.mov",
@@ -26,7 +22,7 @@ const videos = [
             {
                 endTime: 6,
                 title: "HALFMANHALFMACHINE 001 : COPYRIGHT INFRINGEMENT",
-                text: "Halfmanhalfmachine // death + time http://www.google.com // the space between https://www.youtube.com/watch?v=SsWsmH2d_Qg life and death // the thoughts behind http://www.wes.is  fdsafdsa ll"
+                text: "Halfmanhalfmachine // death + time // the space between life and death // the thoughts behind"
             },
             {
                 endTime: 10,
@@ -66,7 +62,7 @@ const videos = [
             {
                 endTime: 47,
                 title: "( Ice Cube ) Wicked",
-                text: "Ice Cube Wicked Epic Moments https://www.youtube.com/watch?v=SsWsmH2d_Qg"
+                text: "Ice Cube Wicked Epic Moments https://www.youtube.com/watch?v=SsWsmH2d_Qg something http://google.com"
             },
             {
                 endTime: 66,

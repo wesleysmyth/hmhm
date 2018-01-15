@@ -4,7 +4,6 @@
   "description": "half man half machine",
   "main": "index.js",
   "scripts": {
-    "install": "NODE_ENV='production' webpack",
     "watch": "NODE_ENV='development' webpack-dev-server --config ./webpack.config.js --host localhost --hot --inline --progress --history-api-fallback",
     "watch-devtools": "NODE_ENV='development' DEVTOOLS_ENABLED='true' webpack-dev-server --config ./webpack.config.js --host localhost --hot --inline --progress --history-api-fallback"
   },
@@ -31,6 +30,7 @@
     "react-redux": "^4.4.1",
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.8",
+    "react-timer-component": "^1.0.2",
     "redux": "^3.3.1",
     "redux-promise-middleware": "^2.3.3",
     "redux-thunk": "^2.2.0",
