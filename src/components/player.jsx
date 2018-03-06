@@ -34,6 +34,7 @@ export default class Player extends Component {
                         className="player--video"
                         loop={true}
                         autoPlay={true}
+                        controlsList="nodownload"
                         onMouseOver={this.toggleControls}
                         onMouseLeave={this.toggleControls}
                         onClick={this.togglePlay}

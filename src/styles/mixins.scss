@@ -7,3 +7,11 @@
     -o-animation: fadein $time; /* Opera < 12.1 */
     animation: fadein $time;
 }
+
+@mixin fadeOut($time) {
+    -webkit-animation: ease-in-out $time; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: ease-in-out $time; /* Firefox < 16 */
+    -ms-animation: ease-in-out $time; /* Internet Explorer */
+    -o-animation: ease-in-out $time; /* Opera < 12.1 */
+    animation: ease-in-out $time;
+}

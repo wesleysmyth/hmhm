@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { browserHistory } from "react-router";
 import videos from "../data/videos";
 
-export default class VideoLibrary extends Component {
+export default class FilmLibrary extends Component {
 
     render() {
         return (
             <div className="video-library">
-                <h1>This is the video library page</h1>
+                <h1>This is the film library page</h1>
                 {this.renderVideos()}
             </div>
         );
@@ -31,7 +31,7 @@ export default class VideoLibrary extends Component {
     }
 
     showVideo(id) {
-        browserHistory.push(`/videos/${id}`);
+        browserHistory.push(`/film-library/${id}`);
     }
 
 };

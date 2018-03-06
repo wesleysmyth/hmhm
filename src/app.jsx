@@ -5,11 +5,11 @@ import { Router, Route, IndexRoute, browserHistory, Redirect } from "react-route
 import { syncHistoryWithStore } from "react-router-redux";
 import { render } from "react-dom";
 import store from "./store";
-import Home from "./components/home";
+import Home from "./containers/home";
 import Player from "./containers/player";
-import VideoLibrary from "./containers/videoLibrary";
-import PrintLibrary from "./containers/printLibrary";
-import About from "./components/about";
+import FilmLibrary from "./containers/filmLibrary";
+import MagazineLibrary from "./containers/magazineLibrary";
+import Information from "./components/information";
 import Contact from "./components/contact";
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -17,11 +17,11 @@ const routes = (
     <div>
         <Route path="/" component={Home}>
             <IndexRoute component={Player} />
-            <Route path="/videos" component={VideoLibrary} />
-                <Route path="/videos/:id" component={Player} />
-            <Route path="/print" component={PrintLibrary} />
-                <Route path="/print/:id" component={Player} />
-            <Route path="/about" component={About} />
+            <Route path="/film-library" component={FilmLibrary} />
+                <Route path="/film-library/:id" component={Player} />
+            <Route path="/magazines" component={MagazineLibrary} />
+                <Route path="/magazines/:id" component={Player} />
+            <Route path="/information" component={Information} />
             <Route path="/contact" component={Contact} />
             <Route path="*" component={Player} />
             <Redirect from="/*" to="/" />

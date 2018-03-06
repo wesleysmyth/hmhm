@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import playerReducer from "./player";
-import videosReducer from "./videos";
+import player from "./player";
+import videos from "./videos";
+import menu from "./menu";
 
 export default {
-    player: playerReducer,
-    videos: videosReducer
+    player,
+    videos,
+    menu,
 };

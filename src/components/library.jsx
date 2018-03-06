@@ -62,7 +62,7 @@ export default class Library extends Component {
     }
 
     showVideo(id) {
-        browserHistory.push(`/videos/${id}`);
+        browserHistory.push(`/film-library/${id}`);
     }
 
 };

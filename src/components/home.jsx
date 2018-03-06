@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import { Link, browserHistory } from "react-router";
 import $ from "jquery";
 import _get from "lodash.get";
+import autobind from "autobind-decorator";
 
 export default class Home extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { menuOpen: false };
-    }
-
     render() {
-        const { children } = this.props;
+        const { children, menuOpen } = this.props;
         const type = _get(children, "type.WrappedComponent.name", "");
         const isPlayer = type === "Player";
         const dropdownClass = isPlayer ? "player" : "";
@@ -20,68 +16,70 @@ export default class Home extends Component {
             <div className="home">
                 <header className="home__header">
                     <h2 className="home__title" onClick={this.goHome}>HALFMANHALFMACHINE</h2>
-                    <div className="menu">
+                    <div className="menu" onClick={this.toggleMenu}>
                         <h4 className="menu--title">// MENU //</h4>
                     </div>
                 </header>
-                <aside className={`menu__dropdown ${dropdownClass}`}>
-                    <Link className="menu--option" to="/">Home</Link>
-                    <Link className="menu--option" to="/videos">Videos</Link>
-                    <Link className="menu--option" to="/print">Print</Link>
-                    <Link className="menu--option" to="/about">About</Link>
-                    <Link className="menu--option" to="/contact">Contact</Link>
-                </aside>
+                {menuOpen &&
+                    <aside className={`menu__dropdown ${dropdownClass}`}>
+                        <img className="logo" src="/src/images/logos-03.png" />
+                        <hr />
+                        <Link className="menu--option" to="/">
+                            <span className="asterisk">*</span>
+                            Channel 001
+                        </Link>
+                        <Link className="menu--option" to="/film-library">
+                            <span className="asterisk">*</span>
+                            Film Library
+                        </Link>
+                        <Link className="menu--option" to="/magazines">
+                            <span className="asterisk">*</span>
+                            Magazines
+                        </Link>
+                        <Link className="menu--option" to="/information">
+                            <span className="asterisk">*</span>
+                            Information
+                        </Link>
+                        <Link className="menu--option" to="/contact">
+                            <span className="asterisk">*</span>
+                            Contact
+                        </Link>
+                    </aside>
+                }
                 {children}
             </div>
         );
-    }
-
-    componentDidMount() {
-        this.registerMenuToggle();
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        const menuStatusChanged = this.state.menuOpen !== nextState.menuOpen;
-
-        if (menuStatusChanged) {
-            this.toggleMenu(nextState.menuOpen);
-        }
-    }
-
-    toggleMenu(openMenu) {
-        const $dropdown = $(".menu__dropdown");
-
-        if (openMenu) {
-            $dropdown.fadeIn(1000).css({ display: "flex" });
-        } else {
-            $dropdown.fadeOut(1000);
-        }
     }
 
     goHome() {
         browserHistory.push(`/`);
     }
 
+    @autobind
+    toggleMenu() {
+        this.props.toggleMenu();
+    }
+
     registerMenuToggle() {
         const $menu = $(".menu")
         const $dropdown = $(".menu__dropdown");
 
-        // show the dropdown menu on hover
-        $menu.hover(() => {
-            this.setState({ menuOpen: true });
-        }, ({ relatedTarget }) => {
-            const targetIsDropdown = relatedTarget && (relatedTarget.className === "menu--option" || relatedTarget.className.match(/menu__dropdown/) || relatedTarget.className.match(/player/));
+        // // show the dropdown menu on hover
+        // $menu.hover(() => {
+        //     this.setState({ menuOpen: true });
+        // }, ({ relatedTarget }) => {
+        //     const targetIsDropdown = relatedTarget && (relatedTarget.className === "menu--option" || relatedTarget.className.match(/menu__dropdown/) || relatedTarget.className.match(/player/));
 
-            if (!targetIsDropdown) {
-                this.setState({ menuOpen: false });
-            }
-        });
+        //     if (!targetIsDropdown) {
+        //         this.setState({ menuOpen: false });
+        //     }
+        // });
 
         // hide the menu on dropdown leave
-        $dropdown.hover(() => {}, ({ relatedTarget }) => {
-            if (relatedTarget && relatedTarget.className !== "menu") {
-                this.setState({ menuOpen: false });
-            }
-        });
+        // $dropdown.hover(() => {}, ({ relatedTarget }) => {
+        //     if (relatedTarget && relatedTarget.className !== "menu") {
+        //         this.setState({ menuOpen: false });
+        //     }
+        // });
     }
 }
