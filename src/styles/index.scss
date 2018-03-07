@@ -104,9 +104,10 @@ video::-internal-media-controls-download-button {
         letter-spacing: 3px;
         line-height: 13px;
 
-        span:not(.asterisk) {
-            &:hover {
+        &:hover {
+            .menu--option-title {
                 text-decoration: underline;
+                text-decoration-color: $light-blue;
             }
         }
 

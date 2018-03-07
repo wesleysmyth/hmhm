@@ -1,4 +1,5 @@
 require("!style-loader!css-loader!sass-loader!./styles/index.scss");
+import 'babel-polyfill';
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { Router, Route, IndexRoute, browserHistory, Redirect } from "react-router";

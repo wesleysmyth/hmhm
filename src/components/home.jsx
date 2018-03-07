@@ -26,23 +26,23 @@ export default class Home extends Component {
                         <hr />
                         <Link className="menu--option" to="/">
                             <span className="asterisk">*</span>
-                            Channel 001
+                            <span className="menu--option-title">Channel 001</span>
                         </Link>
                         <Link className="menu--option" to="/film-library">
                             <span className="asterisk">*</span>
-                            Film Library
+                            <span className="menu--option-title">Film Library</span>
                         </Link>
                         <Link className="menu--option" to="/magazines">
                             <span className="asterisk">*</span>
-                            Magazines
+                            <span className="menu--option-title">Magazines</span>
                         </Link>
                         <Link className="menu--option" to="/information">
                             <span className="asterisk">*</span>
-                            Information
+                            <span className="menu--option-title">Information</span>
                         </Link>
                         <Link className="menu--option" to="/contact">
                             <span className="asterisk">*</span>
-                            Contact
+                            <span className="menu--option-title">Contact</span>
                         </Link>
                     </aside>
                 }

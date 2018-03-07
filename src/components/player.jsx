@@ -3,6 +3,7 @@ import _ from "underscore";
 import $ from "jquery";
 import _get from "lodash.get";
 import autobind from "autobind-decorator";
+import Typist from "react-typist";
 import videos from "../data/videos";
 
 export default class Player extends Component {
@@ -11,7 +12,8 @@ export default class Player extends Component {
         super(props);
         this.state = {
             registeredFullScreenListeners: false,
-            currentChapter: 0
+            currentChapter: 0,
+            showTyping: false
         };
     }
 
@@ -53,7 +55,11 @@ export default class Player extends Component {
                         </div>
                         <div className="player__footer--text">
                             <img className="logo" src="/src/images/logos-02.png" />
-                            {subText}
+                            {this.state.showTyping &&
+                                <Typist key={this.state.currentChapter}>
+                                    {subText}
+                                </Typist>
+                            }
                         </div>
                     </footer>
                 </div>
@@ -74,9 +80,14 @@ export default class Player extends Component {
 
     componentWillReceiveProps(nextProps) {
         const { currentVideo } = this.props;
+        const textAvailable = _get(nextProps, "currentVideo.chapters.length", 0);
 
         if (currentVideo.id !== nextProps.currentVideo.id) {
             this.registerChapters(nextProps.currentVideo);
+        }
+
+        if (textAvailable) {
+            this.setState({ showTyping: true });
         }
     }
 
