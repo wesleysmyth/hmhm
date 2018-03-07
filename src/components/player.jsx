@@ -13,20 +13,23 @@ export default class Player extends Component {
         this.state = {
             registeredFullScreenListeners: false,
             currentChapter: 0,
-            showTyping: false
+            showTyping: false,
+            currentTime: 0
         };
     }
 
     render() {
         const { metaId, playerId, currentVideo, currentVideo: { chapters } } = this.props;
+        const { currentTime } = this.state;
         const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
         const subText = this.createSubText(currentChapter);
         const title = currentChapter ? currentChapter.title : currentVideo.title;
         const avgTypingDelay = this.getAvgTypingDelay();
-        // const htmlVideo = this.getHTMLVideo();
-        // const duration = htmlVideo && htmlVideo.duration;
-        // const currentTime = htmlVideo && htmlVideo.currentTime;
-        // const remainingTime = duration && currentTime && duration - currentTime;
+        const millisecondsNum = parseInt((currentTime % 1) * 1000, 10);
+        const milliseconds = ("00" + millisecondsNum).slice(-3);
+        const seconds = parseInt(currentTime % 60, 10);
+        const minutes = parseInt((currentTime / 60) % 60, 10);
+        const hours = parseInt((currentTime / (60 * 60)) % 24);
 
         return (
             <main className="player">
@@ -49,10 +52,9 @@ export default class Player extends Component {
                         <div className="player__footer__meta">
                             {metaId}
                             <h5 className="player__footer__meta--title">{title} :</h5>
-                            {/* <Timer currentTime={currentTime} /> */}
-                            {/*<Timer remaining={remainingTime}>
-                              <Countdown />
-                            </Timer>*/}
+                            <h5 className="timer">
+                                {hours ? hours + ":" : ""}{minutes}:{seconds}:{milliseconds}
+                            </h5>
                         </div>
                         <div className="player__footer--text">
                             <img className="logo" src="/src/images/logos-02.png" />
@@ -79,7 +81,17 @@ export default class Player extends Component {
         this.hideElement(video);
         video.addEventListener("loadeddata", this.videoIsReady.bind(this, video));
         video.addEventListener("error", this.videoError.bind(this, video));
+        video.addEventListener("play", this.startTracking.bind(this, video));
+        video.addEventListener("pause", this.stopTracking.bind(this, video));
     }
+
+    startTracking(video) {
+        this.timer = setInterval(() => this.setState({ currentTime: video.currentTime }), 50);
+    }
+
+    stopTracking() {
+        clearInterval(this.timer);
+    };
 
     componentWillReceiveProps(nextProps) {
         const { currentVideo } = this.props;
@@ -87,6 +99,7 @@ export default class Player extends Component {
 
         if (currentVideo.id !== nextProps.currentVideo.id) {
             this.registerChapters(nextProps.currentVideo);
+            this.setState({ currentVideo: nextProps.currentVideo });
         }
 
         if (textAvailable) {
