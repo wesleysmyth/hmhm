@@ -22,6 +22,7 @@ export default class Player extends Component {
         const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
         const subText = this.createSubText(currentChapter);
         const title = currentChapter ? currentChapter.title : currentVideo.title;
+        const avgTypingDelay = this.getAvgTypingDelay();
         // const htmlVideo = this.getHTMLVideo();
         // const duration = htmlVideo && htmlVideo.duration;
         // const currentTime = htmlVideo && htmlVideo.currentTime;
@@ -56,7 +57,9 @@ export default class Player extends Component {
                         <div className="player__footer--text">
                             <img className="logo" src="/src/images/logos-02.png" />
                             {this.state.showTyping &&
-                                <Typist key={this.state.currentChapter}>
+                                <Typist
+                                    key={this.state.currentChapter}
+                                    avgTypingDelay={avgTypingDelay}>
                                     {subText}
                                 </Typist>
                             }
@@ -172,6 +175,19 @@ export default class Player extends Component {
                 }) : text}
             </div>
         );
+    }
+
+    getAvgTypingDelay() {
+        const { currentVideo } = this.props;
+        const { currentChapter } = this.state;
+        const currentEndTime = _get(currentVideo, [ "chapters", currentChapter, "endTime" ]);
+        const nextEndTime = _get(currentVideo, [ "chapters", currentChapter + 1, "endTime" ], 0);
+        const lastChapter = currentChapter === _get(currentVideo, "chapters.length");
+        const timeToNext = nextEndTime - currentEndTime;
+        const charactersInText = _get(currentVideo, [ "chapters", currentChapter, "text", "length" ]);
+        const timeToType = Math.min(Math.abs((timeToNext / charactersInText)) * 300, 100);
+
+        return timeToType;
     }
 
     hideElement(element) {
