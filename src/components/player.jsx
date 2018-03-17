@@ -51,10 +51,10 @@ export default class Player extends Component {
                     <footer className="player__footer">
                         <div className="player__footer__meta">
                             {metaId}
-                            <h5 className="player__footer__meta--title">{title} :</h5>
-                            <h5 className="timer">
+                            <h3 className="player__footer__meta--title">{title} :</h3>
+                            <h3 className="timer">
                                 {hours ? hours + ":" : ""}{minutes}:{seconds}:{milliseconds}
-                            </h5>
+                            </h3>
                         </div>
                         <div className="player__footer--text">
                             <img className="logo" src="/src/images/logos-02.png" />

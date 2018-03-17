@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
+import FlipPage from "react-flip-page";
 import md5 from "md5";
 
 export default class Library extends Component {
@@ -23,6 +24,22 @@ export default class Library extends Component {
             img.style.display = "none";
             this.checkImgLoad(img);
         });
+
+        this.addPageListener();
+    }
+
+    addPageListener() {
+        document.body.addEventListener("keydown", e => {
+            const { keyCode } = e;
+            const right = keyCode === 39;
+            const left = keyCode === 37;
+
+            if (left) {
+                this.flipPage.gotoPreviousPage();
+            } else if (right) {
+                this.flipPage.gotoNextPage();
+            }
+        });
     }
 
     checkImgLoad(img) {
@@ -45,6 +62,13 @@ export default class Library extends Component {
 
         return (
             <div className={`${type}-library__${type}s`}>
+                <FlipPage ref={component => this.flipPage = component}
+                    orientation="horizontal"
+                    flipOnTouch>
+                    <img src="http://derekanthonywelte.com/i.php?/000/821/derekanthonywelte-scottsdaleghosts-4a,xlarge.2x.1517871688.jpg" />
+                    <img src="http://derekanthonywelte.com/i.php?/000/822/derekanthonywelte-scottsdaleghosts-5a,xlarge.2x.1517871688.jpg" />
+                    <img src="http://derekanthonywelte.com/i.php?/000/823/derekanthonywelte-scottsdaleghosts-6,xlarge.2x.1517871688.jpg" />
+                </FlipPage>
                 {items.map((item, index) => {
                     const { imgSrc, imgAlt, title, id } = item;
                     const uniqueId = id + index;

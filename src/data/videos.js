@@ -114,25 +114,7 @@ const videos = [
                 title: "HALFMANHALFMACHINE 001 : COPYRIGHT INFRINGEMENT",
                 text: "Halfmanhalfmachine // death + time // the space between life and death // the thoughts behind"
             }
-        ],
-        // subconciousText: [
-        //     "line one",
-        //     "line two",
-        //     "line threefdhjsakfhdjkslahfjkdlsahfjkldshajklfhdsjklahfdjklsahfjkldshafjkdlsahjkl",
-        //     "line four",
-        //     "line five",
-        //     "line six",
-        //     "line seven",
-        //     "line eight",
-        //     "line nine",
-        //     "line ten",
-        //     "line eleven",
-        //     "line twelve",
-        //     "line thirteen",
-        //     "line fourteen",
-        //     "line fifteen",
-        //     "line sixteen",
-        // ]
+        ]
     }
 ].map(video => {
     video.id = md5(video.src);
