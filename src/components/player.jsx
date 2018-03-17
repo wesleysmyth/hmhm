@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import _ from "underscore";
-import $ from "jquery";
 import _get from "lodash.get";
 import autobind from "autobind-decorator";
 import Typist from "react-typist";
 import videos from "../data/videos";
+import { createTimer } from "../pureFunctions/time";
 
 export default class Player extends Component {
 
@@ -19,17 +19,13 @@ export default class Player extends Component {
     }
 
     render() {
-        const { metaId, playerId, currentVideo, currentVideo: { chapters } } = this.props;
+        const { metaId, currentVideo, currentVideo: { chapters } } = this.props;
         const { currentTime } = this.state;
         const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
         const subText = this.createSubText(currentChapter);
         const title = currentChapter ? currentChapter.title : currentVideo.title;
         const avgTypingDelay = this.getAvgTypingDelay();
-        const millisecondsNum = parseInt((currentTime % 1) * 1000, 10);
-        const milliseconds = ("00" + millisecondsNum).slice(-3);
-        const seconds = parseInt(currentTime % 60, 10);
-        const minutes = parseInt((currentTime / 60) % 60, 10);
-        const hours = parseInt((currentTime / (60 * 60)) % 24);
+        const { hours, minutes, seconds, milliseconds } = createTimer(currentTime);
 
         return (
             <main className="player">
@@ -53,7 +49,7 @@ export default class Player extends Component {
                             {metaId}
                             <h3 className="player__footer__meta--title">{title} :</h3>
                             <h3 className="timer">
-                                {hours ? hours + ":" : ""}{minutes}:{seconds}:{milliseconds}
+                                {hours === "00" ? "" : hours + ":"}{minutes}:{seconds}:{milliseconds}
                             </h3>
                         </div>
                         <div className="player__footer--text">
@@ -73,7 +69,7 @@ export default class Player extends Component {
     }
 
     componentDidMount() {
-        const { fetchMeta, fetchVideo, params } = this.props;
+        const { fetchVideo, params } = this.props;
         const videoId = _get(params, "id", videos[ 2 ].id);
         const video = this.getHTMLVideo();
 
@@ -91,7 +87,7 @@ export default class Player extends Component {
 
     stopTracking() {
         clearInterval(this.timer);
-    };
+    }
 
     componentWillReceiveProps(nextProps) {
         const { currentVideo } = this.props;
@@ -195,7 +191,6 @@ export default class Player extends Component {
         const { currentChapter } = this.state;
         const currentEndTime = _get(currentVideo, [ "chapters", currentChapter, "endTime" ]);
         const nextEndTime = _get(currentVideo, [ "chapters", currentChapter + 1, "endTime" ], 0);
-        const lastChapter = currentChapter === _get(currentVideo, "chapters.length");
         const timeToNext = nextEndTime - currentEndTime;
         const charactersInText = _get(currentVideo, [ "chapters", currentChapter, "text", "length" ]);
         const timeToType = Math.min(Math.abs((timeToNext / charactersInText)) * 300, 100);
@@ -221,7 +216,7 @@ export default class Player extends Component {
         }
     }
 
-    videoError(video) {
+    videoError() {
         const loading = document.querySelector(".loading");
         const container = document.querySelector(".player--video-container");
         const error = document.createElement("h5");
@@ -277,7 +272,7 @@ export default class Player extends Component {
             video.setAttribute("controls", !currentVideoControls);
         }
     }
-};
+}
 
 Player.defaultProps = {
     currentVideo: {}

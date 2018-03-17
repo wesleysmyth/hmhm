@@ -6,18 +6,21 @@ const videos = [
         title: "Pre-Launch 001",
         imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
         imgAlt: "Alt 1",
+        time: 323
     },
     {
         src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/755/8/203777141/692482461.mp4?token=58c5d4f7_0x4891d52c4b2e327cb5ec92a65c461e2b66c6f5d8",
         title: "Paper",
         imgSrc: "https://unsplash.it/300/200?random",
-        imgAlt: "Alt 2"
+        imgAlt: "Alt 2",
+        time: 32873,
     },
     {
         src: "http://wes.is/h.mov",
         title: "Another Title",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 3",
+        time: 323,
         chapters: [
             {
                 endTime: 6,
@@ -81,6 +84,7 @@ const videos = [
         title: "Something Else",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 4",
+        time: 323,
         links: [{
             src: "https://google.com",
             title: "blah",
@@ -91,22 +95,25 @@ const videos = [
         title: "Goldilocks",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 5",
+        time: 323
     },
     {
         src: "",
         title: "Mad Scientist",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 6",
-        links: [{
+        time: 323,
+        links: [ {
             src: "http://wes.is",
             title: "Believe",
-        }],
+        } ],
     },
     {
         src: "https://player.vimeo.com/external/87899059.hd.mp4?s=8bebb1223baebfcffcdd63ef7e6452dcb7a1afc1&profile_id=119",
         title: "Girl",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 7",
+        time: 323,
         chapters: [
             {
                 startTime: 0,

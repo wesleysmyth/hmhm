@@ -23,6 +23,11 @@
             width: 100%;
             cursor: pointer;
         }
+
+        .video-library__videos--video-data {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
 }
