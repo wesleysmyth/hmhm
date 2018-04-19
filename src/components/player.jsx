@@ -72,10 +72,15 @@ export default class Player extends Component {
         const { fetchVideo, params, currentVideo } = this.props;
         const videoId = _get(params, "id", videos[ 2 ].id);
         const video = this.getHTMLVideo();
-        const textAvailable = _.keys(currentVideo).length && _get(currentVideo, "chapters.length", 0);
+        const currentVideoExists = _.keys(currentVideo).length;
+        const textAvailable = currentVideoExists && _get(currentVideo, "chapters.length", 0);
 
         if (textAvailable) {
             this.setState({ showTyping: true });
+        }
+
+        if (currentVideoExists) {
+            this.registerChapters(currentVideo);
         }
 
         fetchVideo(videoId);
