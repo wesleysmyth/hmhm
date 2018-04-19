@@ -4,22 +4,28 @@ const videos = [
     {
         src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/1607/8/208036501/710378441.mp4?token=58c5eb22_0xdfaed5cc298e843279287b464330a6cdb340f804",
         title: "Pre-Launch 001",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
         imgAlt: "Alt 1",
+        tags: [ "new", "001" ],
         time: 323
     },
     {
         src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/755/8/203777141/692482461.mp4?token=58c5d4f7_0x4891d52c4b2e327cb5ec92a65c461e2b66c6f5d8",
         title: "Paper",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 2",
+        tags: [ "new", "shows", "fashion" ],
         time: 32873,
     },
     {
-        src: "http://wes.is/h.mov",
+        src: "http://wes.is/480.mov",
         title: "Another Title",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 3",
+        tags: [ "new", "music" ],
         time: 323,
         chapters: [
             {
@@ -82,8 +88,10 @@ const videos = [
     {
         src: "",
         title: "Something Else",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 4",
+        tags: [ "new", "shows", "music", "001", "fashion" ],
         time: 323,
         links: [{
             src: "https://google.com",
@@ -93,15 +101,19 @@ const videos = [
     {
         src: "",
         title: "Goldilocks",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 5",
+        tags: [ "fashion" ],
         time: 323
     },
     {
         src: "",
         title: "Mad Scientist",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 6",
+        tags: [ "shows", "001", "fashion" ],
         time: 323,
         links: [ {
             src: "http://wes.is",
@@ -111,8 +123,10 @@ const videos = [
     {
         src: "https://player.vimeo.com/external/87899059.hd.mp4?s=8bebb1223baebfcffcdd63ef7e6452dcb7a1afc1&profile_id=119",
         title: "Girl",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
         imgAlt: "Alt 7",
+        tags: [ "new", "shows", "music" ],
         time: 323,
         chapters: [
             {

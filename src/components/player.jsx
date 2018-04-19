@@ -28,7 +28,7 @@ export default class Player extends Component {
         const { hours, minutes, seconds, milliseconds } = createTimer(currentTime);
 
         return (
-            <main className="player">
+            <main ref="player" className="player">
                 <div className="player--video-container">
                     <img className="loading" src="/src/images/Eclipse.svg" />
                     <video
@@ -69,9 +69,14 @@ export default class Player extends Component {
     }
 
     componentDidMount() {
-        const { fetchVideo, params } = this.props;
+        const { fetchVideo, params, currentVideo } = this.props;
         const videoId = _get(params, "id", videos[ 2 ].id);
         const video = this.getHTMLVideo();
+        const textAvailable = _.keys(currentVideo).length && _get(currentVideo, "chapters.length", 0);
+
+        if (textAvailable) {
+            this.setState({ showTyping: true });
+        }
 
         fetchVideo(videoId);
         this.hideElement(video);
@@ -79,14 +84,6 @@ export default class Player extends Component {
         video.addEventListener("error", this.videoError.bind(this, video));
         video.addEventListener("play", this.startTracking.bind(this, video));
         video.addEventListener("pause", this.stopTracking.bind(this, video));
-    }
-
-    startTracking(video) {
-        this.timer = setInterval(() => this.setState({ currentTime: video.currentTime }), 50);
-    }
-
-    stopTracking() {
-        clearInterval(this.timer);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -103,12 +100,36 @@ export default class Player extends Component {
         }
     }
 
-    registerChapters(video) {
-        const { chapters } = video;
+    componentWillUnmount() {
+        const { currentVideo } = this.props;
         const htmlVideo = this.getHTMLVideo();
 
-        htmlVideo.addEventListener("timeupdate", () => {
-            const currentTime = parseInt(htmlVideo.currentTime, 10);
+        htmlVideo.removeEventListener("timeupdate", this.timeUpdate.bind(this, htmlVideo, currentVideo));
+        htmlVideo.removeEventListener("loadeddata", this.videoIsReady.bind(this, htmlVideo));
+        htmlVideo.removeEventListener("error", this.videoError.bind(this, htmlVideo));
+        htmlVideo.removeEventListener("play", this.startTracking.bind(this, htmlVideo));
+        htmlVideo.removeEventListener("pause", this.stopTracking.bind(this, htmlVideo));
+        this.stopTracking();
+    }
+
+    startTracking(video) {
+        this.timer = setInterval(() => this.setState({ currentTime: video.currentTime }), 50);
+    }
+
+    stopTracking() {
+        clearInterval(this.timer);
+    }
+
+    registerChapters(video) {
+        const htmlVideo = this.getHTMLVideo();
+        htmlVideo.addEventListener("timeupdate", this.timeUpdate.bind(this, htmlVideo, video));
+    }
+
+    timeUpdate(htmlVideo, video) {
+        const { chapters } = video;
+        const currentTime = parseInt(htmlVideo.currentTime, 10);
+
+        if (this.refs.player) {
             this.setState({ currentTime });
 
             _.each(chapters, (chapter, index) => {
@@ -121,7 +142,7 @@ export default class Player extends Component {
                     this.setState({ currentChapter: index });
                 }
             });
-        });
+        }
     }
 
     /*

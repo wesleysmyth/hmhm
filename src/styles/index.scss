@@ -167,9 +167,8 @@ video::-internal-media-controls-download-button {
     font-size: 12px;
     line-height: 20px;
     text-align: justify;
-    font-style: italic;
-    color: $light-blue;
     text-transform: uppercase;
+    @include blueText;
 
     & a {
         color: $white;

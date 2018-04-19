@@ -14,6 +14,7 @@
     "max-depth": [2, 10],
     "max-nested-callbacks": [2, 3],
     "no-invalid-this": 0,
+    "no-case-declarations": 0
   },
   "env": {
     "browser": true,

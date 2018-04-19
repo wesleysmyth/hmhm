@@ -1,3 +1,52 @@
+@import "./mixins.scss";
+@import "./colors.scss";
+
+.video-library {
+    margin-top: 20px;
+
+    hr {
+        border: 0;
+        height: 0;
+        border-top: 1px solid $dark-grey;
+        border-bottom: 1px solid $dark-grey;
+        width: 100%;
+        margin: 10px 0 0;
+    }
+}
+
+.video-library__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.video-library__tags {
+    flex: auto;
+    line-height: 10px;
+
+    .video-library__tags--tag {
+        margin: 0 5px;
+        font-size: 0.7rem;
+        color: $light-blue;
+        cursor: pointer;
+
+        &.current {
+            font-weight: bold;
+        }
+
+        &:not(:last-child) {
+            &:after {
+                content: " -";
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.video-library__title {
+    float: right;
+    margin-bottom: 5px;
+}
+
 .video-library__videos {
     display: flex;
     flex-wrap: wrap;
@@ -5,9 +54,17 @@
     .video-library__videos--video {
         display: flex;
         flex-direction: column;
-        width: 31%;
+        width: 32%;
         height: 100%;
         margin: 10px 1%;
+
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        &:nth-child(3n - 2) {
+            margin-left: 0;
+        }
 
         .loading {
             width: 50px;
@@ -17,16 +74,59 @@
         .video-library__videos--video-title {
             text-align: center;
             cursor: pointer;
+            align-self: flex-end;
+            margin-bottom: 5px;
         }
 
         .video-library__videos--video-img {
             width: 100%;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .video-library__videos--video--play {
             cursor: pointer;
         }
 
         .video-library__videos--video-data {
             display: flex;
             justify-content: space-between;
+        }
+
+        .video-library__videos--video__summary-container {
+            display: flex;
+        }
+
+        .video-library__videos--video--time {
+            @include blueText;
+            font-size: 8px;
+            width: 100%;
+            float: right;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .logo {
+            min-width: 40px;
+            height: 40px;
+            margin: auto 0;
+            margin-right: 10px;
+        }
+
+        hr {
+            border: 0;
+            height: 0;
+            border-top: 1px solid $dark-grey;
+            border-bottom: 1px solid $dark-grey;
+            width: 100%;
+            margin: 10px 0 0;
+        }
+
+        .video-library__videos--video--summary {
+            @include blueText;
+            font-size: 10px;
+            line-height: 2em;
+            text-transform: none;
         }
     }
 

@@ -34,4 +34,4 @@ export default class FilmLibrary extends Component {
         browserHistory.push(`/film-library/${id}`);
     }
 
-};
+}

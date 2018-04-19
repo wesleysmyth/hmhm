@@ -1,44 +1,82 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
 import FlipPage from "react-flip-page";
+import _ from "underscore";
 import { createTimer } from "../pureFunctions/time";
 
 export default class Library extends Component {
 
     render() {
-        const { type } = this.props;
+        const { type, items, filterTags, currentTag } = this.props;
+        const tags = _.uniq(items.reduce((prev, next) => {
+            if (next.tags) {
+                return prev.concat(next.tags);
+            }
+        }, [])).sort((a, b) => a > b);
+
+        tags.unshift("all");
 
         return (
             <div className={`${type}-library`}>
-                <h1>This is the {type} library page</h1>
+                <div className={`${type}-library__header`}>
+                    <h6 className={`${type}-library__filter`}>// Filter //</h6>
+                    <div className={`${type}-library__tags`}>
+                        {tags.map((tag, i) => {
+                            const isCurrentTag = currentTag === tag ? "current" : "";
+
+                            return (
+                                <span
+                                    key={i}
+                                    onClick={filterTags.bind(null, tag)}
+                                    className={`${type}-library__tags--tag ${isCurrentTag}`}>
+                                    {tag}
+                                </span>
+                            )
+                        })}
+                    </div>
+                    <h6 className={`${type}-library__title`}>Film Library</h6>
+                </div>
+                <hr />
                 {this.renderLibraryItems()}
             </div>
         );
     }
 
     componentDidMount() {
-        const { type } = this.props;
+        this.checkImages(this.props);
+        this.addPageListener();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { items } = this.props;
+
+        if (items.length !== prevProps.items.length) {
+            this.checkImages(prevProps);
+        }
+    }
+
+    addPageListener() {
+        if (this.props.type === "print") {
+            document.body.addEventListener("keydown", e => {
+                const { keyCode } = e;
+                const right = keyCode === 39;
+                const left = keyCode === 37;
+
+                if (left) {
+                    this.flipPage.gotoPreviousPage();
+                } else if (right) {
+                    this.flipPage.gotoNextPage();
+                }
+            });
+        }
+    }
+
+    checkImages({ type }) {
         const imgs = document.querySelectorAll(`.${type}-library__${type}s--${type}-img`);
 
         imgs.forEach(img => {
             img.style.display = "none";
             this.checkImgLoad(img);
-        });
-
-        this.addPageListener();
-    }
-
-    addPageListener() {
-        document.body.addEventListener("keydown", e => {
-            const { keyCode } = e;
-            const right = keyCode === 39;
-            const left = keyCode === 37;
-
-            if (left) {
-                this.flipPage.gotoPreviousPage();
-            } else if (right) {
-                this.flipPage.gotoNextPage();
-            }
         });
     }
 
@@ -72,7 +110,7 @@ export default class Library extends Component {
                     <img src="http://derekanthonywelte.com/i.php?/000/823/derekanthonywelte-scottsdaleghosts-6,xlarge.2x.1517871688.jpg" />
                 </FlipPage>}
                 {items.map((item, index) => {
-                    const { imgSrc, imgAlt, title, id, time } = item;
+                    const { imgSrc, imgAlt, title, id, time, summary } = item;
                     const uniqueId = id + index;
                     const itemClass = `${type}-library__${type}s--${type}`;
                     const { hours, minutes, seconds } = createTimer(time);
@@ -83,10 +121,15 @@ export default class Library extends Component {
                             <img id={uniqueId} className={`${itemClass}-img`} src={imgSrc} alt={imgAlt} onClick={this.showVideo.bind(this, id)} />
                             <div className={`${itemClass}-data`}>
                                 <h5 className={`${itemClass}-title`} onClick={this.showVideo.bind(this, id)}>{title}</h5>
-                                <div className={`${itemClass}-right`}>
-                                    <h5 className={`${itemClass}-play`} onClick={this.showVideo.bind(this, id)}>PLAY</h5>
-                                    <span className={`${itemClass}-time`}>{hours === "00" ? "" : hours + ":"}{minutes}:{seconds}</span>
+                                <div className={`${itemClass}--right`}>
+                                    <h5 className={`${itemClass}--play`} onClick={this.showVideo.bind(this, id)}>PLAY</h5>
+                                    <span className={`${itemClass}--time`}>{hours === "00" ? "" : hours + ":"}{minutes}:{seconds}</span>
                                 </div>
+                            </div>
+                            <hr />
+                            <div className={`${itemClass}__summary-container`}>
+                                <img className="logo" src="/src/images/logos-02.png" />
+                                <p className={`${itemClass}--summary`}>{summary}</p>
                             </div>
                         </div>
                     );

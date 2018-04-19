@@ -1,4 +1,5 @@
 @import "./animations.scss";
+@import "./colors.scss";
 
 @mixin fadeIn($time) {
     -webkit-animation: fadein $time; /* Safari, Chrome and Opera > 12.1 */
@@ -14,4 +15,9 @@
     -ms-animation: ease-in-out $time; /* Internet Explorer */
     -o-animation: ease-in-out $time; /* Opera < 12.1 */
     animation: ease-in-out $time;
+}
+
+@mixin blueText() {
+    font-style: italic;
+    color: $light-blue;
 }
