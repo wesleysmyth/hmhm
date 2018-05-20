@@ -28,9 +28,12 @@
         font-size: 0.7rem;
         color: $light-blue;
         cursor: pointer;
+        opacity: 0.9;
 
         &.current {
             font-weight: bold;
+            font-size: 0.72rem;
+            opacity: 1;
         }
 
         &:not(:last-child) {

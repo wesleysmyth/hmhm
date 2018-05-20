@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        // fetchVideos: fetchVideos()
+        // fetchMagazines: dispatch(fetchMagazines()),
     };
 }
 
