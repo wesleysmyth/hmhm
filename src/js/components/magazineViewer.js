@@ -20,7 +20,7 @@ export default class MagazineViewer extends Component {
                     flipOnTouch
                     loopForever
                     responsive
-                    /* uncutPages should be included to override height restriction for images */
+                    /* 'uncutPages' can be included to override height restriction for images */
                     width={((window.innerWidth * .80))}
                     pageBackground="#000">
                     {pages.map((page, i) => <img src={page.src} key={i} />)}

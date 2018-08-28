@@ -1,4 +1,4 @@
-require("!style-loader!css-loader!sass-loader!./styles/index.scss");
+require("!style-loader!css-loader!sass-loader!../styles/index.scss");
 import 'babel-polyfill';
 import React, { Component } from "react";
 import { Provider } from "react-redux";
@@ -42,7 +42,7 @@ render((
 
 function addDevTools() {
     if (process.env.DEVTOOLS_ENABLED) {
-        const Devtools = require("../devtools/");
+        const Devtools = require("../../devtools/");
         return <Route path="/" component={Devtools} />;
     }
 }

@@ -1,7 +1,7 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
 const Devtools = require("./containers/devtools");
-const store = require("../src/store");
+const store = require("../src/js/store");
 
 module.exports = (function() {
     const devtoolsEl = document.createElement("div");

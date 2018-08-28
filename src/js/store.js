@@ -6,7 +6,7 @@ import reducers from "./reducers";
 let createStoreWithMiddleware;
 
 if (process.env.DEVTOOLS_ENABLED) {
-    require("../devtools/containers/devtools.jsx");
+    require("../../devtools/containers/devtools.jsx");
     createStoreWithMiddleware = compose(
         applyMiddleware(ReduxPromise(), ReduxThunk),
         window.DevTools.instrument()

@@ -5,7 +5,7 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 process.noDeprecation = true;
 
 var config = {
-    entry: path.resolve(__dirname, "./src/app.jsx"),
+    entry: path.resolve(__dirname, "./src/js/app.jsx"),
     output: {
         path: path.resolve(__dirname),
         filename: "bundle.js",
@@ -26,11 +26,6 @@ var config = {
                     "plugins": [ "transform-decorators-legacy" ]
                 },
             },
-            // {
-            //     test: /\.jsx?$/,
-            //     exclude: /node_modules/,
-            //     loader: "eslint-loader",
-            // },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
