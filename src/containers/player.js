@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { addPlayer, fetchMeta, fetchVideo } from "../actions/player";
-import Home from "../components/player";
+import Player from "../components/player";
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -18,4 +18,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

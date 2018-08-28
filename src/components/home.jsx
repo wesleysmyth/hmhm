@@ -32,7 +32,7 @@ export default class Home extends Component {
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Film Library</span>
                         </Link>
-                        <Link className="menu--option" to="/magazines">
+                        <Link className="menu--option" to="/magazine-library">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Magazines</span>
                         </Link>

@@ -1,7 +1,8 @@
 @import "./mixins.scss";
 @import "./colors.scss";
 
-.video-library {
+.video-library,
+.magazine-library {
     margin-top: 20px;
 
     hr {
@@ -14,16 +15,19 @@
     }
 }
 
-.video-library__header {
+.video-library__header,
+.magazine-library__header {
     display: flex;
     justify-content: space-between;
 }
 
-.video-library__tags {
+.video-library__tags,
+.magazine-library__tags {
     flex: auto;
     line-height: 10px;
 
-    .video-library__tags--tag {
+    .video-library__tags--tag,
+    .magazine-library__tags--tag {
         margin: 0 5px;
         font-size: 0.7rem;
         color: $light-blue;
@@ -45,16 +49,19 @@
     }
 }
 
-.video-library__title {
+.video-library__title,
+.magazine-library__title {
     float: right;
     margin-bottom: 5px;
 }
 
-.video-library__videos {
+.video-library__videos,
+.magazine-library__magazines {
     display: flex;
     flex-wrap: wrap;
 
-    .video-library__videos--video {
+    .video-library__videos--video,
+    .magazine-library__magazines--magazine {
         display: flex;
         flex-direction: column;
         width: 32%;
@@ -74,28 +81,37 @@
             margin: 30px auto;
         }
 
-        .video-library__videos--video-title {
+        .video-library__videos--video-title,
+        .magazine-library__magazines--magazine-title {
             text-align: center;
             cursor: pointer;
             align-self: flex-end;
             margin-bottom: 5px;
         }
 
-        .video-library__videos--video-img {
+        .video-library__videos--video-img,
+        .magazine-library__magazines--magazine-img {
             width: 100%;
             cursor: pointer;
             margin-bottom: 10px;
         }
 
-        .video-library__videos--video--play {
+        .video-library__videos--video--play,
+        .magazine-library__magazines--magazine--play {
             cursor: pointer;
         }
 
-        .video-library__videos--video-data {
+        .video-library__videos--video-data,
+        .magazine-library__magazines--magazine-data {
             display: flex;
             justify-content: space-between;
         }
 
+        .magazine-library__magazines--magazine-data {
+            margin-top: 30px;
+        }
+
+        .video-library__videos--video__summary-container,
         .video-library__videos--video__summary-container {
             display: flex;
         }
@@ -125,7 +141,8 @@
             margin: 10px 0 0;
         }
 
-        .video-library__videos--video--summary {
+        .video-library__videos--video--summary,
+        .magazine-library__magazines--magazine--summary {
             @include blueText;
             font-size: 10px;
             line-height: 2em;

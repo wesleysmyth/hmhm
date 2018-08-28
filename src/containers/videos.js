@@ -1,16 +1,20 @@
 import { connect } from "react-redux";
+import { filterVideoTags } from "../actions/library";
 import Library from "../components/Library";
 
 function mapStateToProps(state) {
+    const { items, currentTag } = state.videos;
+
     return {
-        type: "print",
-        items: [],
+        type: "video",
+        items,
+        currentTag,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        // fetchMagazines: dispatch(fetchMagazines()),
+        filterTags: tag => dispatch(filterVideoTags(tag)),
     };
 }
 

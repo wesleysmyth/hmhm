@@ -1,5 +1,6 @@
 @import "./normalize.scss";
-@import "./videos.scss";
+@import "./library.scss";
+@import "./magazineViewer.scss";
 @import "./colors.scss";
 @import "./mixins.scss";
 @import "./animations.scss";
@@ -72,7 +73,7 @@ video::-internal-media-controls-download-button {
 .menu__dropdown {
     display: flex;
     position: absolute;
-    z-index: 1;
+    z-index: 1000;
     right: 10%;
     flex-direction: column;
     width: 160px;

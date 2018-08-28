@@ -3,12 +3,16 @@ import { browserHistory } from "react-router";
 import FlipPage from "react-flip-page";
 import _ from "underscore";
 import { createTimer } from "../pureFunctions/time";
+import videos from "../data/videos";
+import magazines from "../data/magazines";
 
 export default class Library extends Component {
 
     render() {
-        const { type, items, filterTags, currentTag } = this.props;
-        const tags = _.uniq(items.reduce((prev, next) => {
+        const { type, filterTags, currentTag } = this.props;
+        const libraryType = type === "video" ? "Film" : "Magazine";
+        const data = type === "video" ? videos : magazines;
+        const tags = _.uniq(data.reduce((prev, next) => {
             if (next.tags) {
                 return prev.concat(next.tags);
             }
@@ -34,7 +38,7 @@ export default class Library extends Component {
                             )
                         })}
                     </div>
-                    <h6 className={`${type}-library__title`}>Film Library</h6>
+                    <h6 className={`${type}-library__title`}>{`${libraryType} Library`}</h6>
                 </div>
                 <hr />
                 {this.renderLibraryItems()}
@@ -44,7 +48,6 @@ export default class Library extends Component {
 
     componentDidMount() {
         this.checkImages(this.props);
-        this.addPageListener();
     }
 
     componentDidUpdate(prevProps) {
@@ -55,20 +58,8 @@ export default class Library extends Component {
         }
     }
 
-    addPageListener() {
-        if (this.props.type === "print") {
-            document.body.addEventListener("keydown", e => {
-                const { keyCode } = e;
-                const right = keyCode === 39;
-                const left = keyCode === 37;
-
-                if (left) {
-                    this.flipPage.gotoPreviousPage();
-                } else if (right) {
-                    this.flipPage.gotoNextPage();
-                }
-            });
-        }
+    componentWillUnmount() {
+        this.props.filterTags("all");
     }
 
     checkImages({ type }) {
@@ -100,30 +91,24 @@ export default class Library extends Component {
 
         return (
             <div className={`${type}-library__${type}s`}>
-                {type === "print" &&
-                <FlipPage ref={component => this.flipPage = component}
-                    orientation="horizontal"
-                    flipOnTouch
-                    width={((window.innerWidth * .80) / 2)}>
-                    <img src="http://derekanthonywelte.com/i.php?/000/821/derekanthonywelte-scottsdaleghosts-4a,xlarge.2x.1517871688.jpg" />
-                    <img src="http://derekanthonywelte.com/i.php?/000/822/derekanthonywelte-scottsdaleghosts-5a,xlarge.2x.1517871688.jpg" />
-                    <img src="http://derekanthonywelte.com/i.php?/000/823/derekanthonywelte-scottsdaleghosts-6,xlarge.2x.1517871688.jpg" />
-                </FlipPage>}
                 {items.map((item, index) => {
                     const { imgSrc, imgAlt, title, id, time, summary } = item;
                     const uniqueId = id + index;
                     const itemClass = `${type}-library__${type}s--${type}`;
+                    const actionText = type === "video" ? "PLAY" : "READ";
                     const { hours, minutes, seconds } = createTimer(time);
 
                     return (
                         <div className={itemClass} key={index}>
                             <img id={`loading ${uniqueId}`} className="loading" src="/src/images/Eclipse.svg" />
-                            <img id={uniqueId} className={`${itemClass}-img`} src={imgSrc} alt={imgAlt} onClick={this.showVideo.bind(this, id)} />
+                            <img id={uniqueId} className={`${itemClass}-img`} src={imgSrc} alt={imgAlt} onClick={this.showItem.bind(this, id)} />
                             <div className={`${itemClass}-data`}>
-                                <h5 className={`${itemClass}-title`} onClick={this.showVideo.bind(this, id)}>{title}</h5>
+                                <h5 className={`${itemClass}-title`} onClick={this.showItem.bind(this, id)}>{title}</h5>
                                 <div className={`${itemClass}--right`}>
-                                    <h5 className={`${itemClass}--play`} onClick={this.showVideo.bind(this, id)}>PLAY</h5>
-                                    <span className={`${itemClass}--time`}>{hours === "00" ? "" : hours + ":"}{minutes}:{seconds}</span>
+                                    <h5 className={`${itemClass}--play`} onClick={this.showItem.bind(this, id)}>{actionText}</h5>
+                                    {type === "video" &&
+                                        <span className={`${itemClass}--time`}>{hours === "00" ? "" : hours + ":"}{minutes}:{seconds}</span>
+                                    }
                                 </div>
                             </div>
                             <hr />
@@ -138,8 +123,9 @@ export default class Library extends Component {
         );
     }
 
-    showVideo(id) {
-        browserHistory.push(`/film-library/${id}`);
+    showItem(id) {
+        const prefix = this.props.type === "video" ? "film" : "magazine";
+        browserHistory.push(`/${prefix}-library/${id}`);
     }
 
 }
