@@ -68,6 +68,12 @@
         height: 100%;
         margin: 10px 1%;
 
+        &:hover {
+            .video-library__videos--video-img {
+                @include invert(5s);
+            }
+        }
+
         &:nth-child(3n) {
             margin-right: 0;
         }
@@ -86,7 +92,7 @@
             text-align: center;
             cursor: pointer;
             align-self: flex-end;
-            margin-bottom: 5px;
+            margin-bottom: 14px;
         }
 
         .video-library__videos--video-img,
@@ -108,7 +114,7 @@
         }
 
         .magazine-library__magazines--magazine-data {
-            margin-top: 30px;
+            margin-top: 10px;
         }
 
         .video-library__videos--video__summary-container,

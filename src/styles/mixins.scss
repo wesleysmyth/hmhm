@@ -21,3 +21,17 @@
     font-style: italic;
     color: $light-blue;
 }
+
+@mixin invert($time) {
+    -webkit-animation: invert $time; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: invert $time; /* Firefox < 16 */
+    -ms-animation: invert $time; /* Internet Explorer */
+    -o-animation: invert $time; /* Opera < 12.1 */
+    animation: invert $time;
+    -webkit-animation: invertReverse $time; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: invertReverse $time; /* Firefox < 16 */
+    -ms-animation: invertReverse $time; /* Internet Explorer */
+    -o-animation: invertReverse $time; /* Opera < 12.1 */
+    animation: invertReverse $time;
+}
+

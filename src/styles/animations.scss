@@ -48,3 +48,25 @@
         transform: translateY(-800%);
     }
 }
+
+@keyframes invert {
+    0% { filter: invert(0%); }
+    100% { filter: invert(100%); }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes invert {
+    0% { filter: invert(0%); }
+    100% { filter: invert(100%); }
+}
+
+@keyframes invertReverse {
+    100% { filter: invert(100%); }
+    0% { filter: invert(0%); }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes invertReverse {
+    100% { filter: invert(100%); }
+    0% { filter: invert(0%); }
+}

@@ -142,6 +142,10 @@ video::-internal-media-controls-download-button {
     display: none;
     margin-top: 20px;
     @include fadeIn(2s);
+
+    .logo {
+        height: fit-content;
+    }
 }
 
 .player__footer {

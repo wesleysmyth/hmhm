@@ -26,6 +26,8 @@ export default class Player extends Component {
         const title = currentChapter ? currentChapter.title : currentVideo.title;
         const avgTypingDelay = this.getAvgTypingDelay();
         const { hours, minutes, seconds, milliseconds } = createTimer(currentTime);
+        const firstChapter = this.state.currentChapter === 0;
+        const startDelay = firstChapter ? 2000 : 0;
 
         return (
             <main ref="player" className="player">
@@ -37,17 +39,18 @@ export default class Player extends Component {
                         loop={true}
                         autoPlay={true}
                         controlsList="nodownload"
-                        onMouseOver={this.toggleControls}
-                        onMouseLeave={this.toggleControls}
+                        // onMouseOver={this.toggleControls}
+                        // onMouseLeave={this.toggleControls}
                         onClick={this.togglePlay}
                         src={currentVideo.src}>
                     </video>
+                    <h6>Watermark</h6>
                 </div>
                 <div className="player__data">
                     <footer className="player__footer">
                         <div className="player__footer__meta">
                             {metaId}
-                            <h3 className="player__footer__meta--title">{title} :</h3>
+                            <h3 className="player__footer__meta--title">{title}</h3>
                             <h3 className="timer">
                                 {hours === "00" ? "" : hours + ":"}{minutes}:{seconds}:{milliseconds}
                             </h3>
@@ -57,7 +60,8 @@ export default class Player extends Component {
                             {this.state.showTyping &&
                                 <Typist
                                     key={this.state.currentChapter}
-                                    avgTypingDelay={avgTypingDelay}>
+                                    avgTypingDelay={avgTypingDelay}
+                                    startDelay={startDelay}>
                                     {subText}
                                 </Typist>
                             }

@@ -8,22 +8,76 @@ const magazines = [
         tags: [ "new", "001" ],
         pages: [
             {
-                src: "/src/images/DSC_0001_original.jpeg"
+                original: "/src/images/DSC_0001_original.jpeg",
+                thumbnail: "/src/images/DSC_0001_original.jpeg",
             },
             {
-                src: "/src/images/DSC_0002_original.jpeg"
+                original: "/src/images/DSC_0002_original.jpeg",
+                thumbnail: "/src/images/DSC_0002_original.jpeg"
             },
             {
-                src: "/src/images/DSC_0003_original.jpeg"
+                original: "/src/images/DSC_0003_original.jpeg",
+                thumbnail: "/src/images/DSC_0003_original.jpeg"
             },
             {
-                src: "/src/images/DSC_0038_original.jpeg"
+                original: "/src/images/DSC_0038_original.jpeg",
+                thumbnail: "/src/images/DSC_0038_original.jpeg"
             },
             {
-                src: "/src/images/DSC_0039_original.jpeg"
+                original: "/src/images/DSC_0039_original.jpeg",
+                thumbnail: "/src/images/DSC_0039_original.jpeg"
             },
             {
-                src: "/src/images/DSC_0040_original.jpeg"
+                original: "/src/images/DSC_0040_original.jpeg",
+                thumbnail: "/src/images/DSC_0040_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0001_original.jpeg",
+                thumbnail: "/src/images/DSC_0001_original.jpeg",
+            },
+            {
+                original: "/src/images/DSC_0002_original.jpeg",
+                thumbnail: "/src/images/DSC_0002_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0003_original.jpeg",
+                thumbnail: "/src/images/DSC_0003_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0038_original.jpeg",
+                thumbnail: "/src/images/DSC_0038_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0039_original.jpeg",
+                thumbnail: "/src/images/DSC_0039_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0040_original.jpeg",
+                thumbnail: "/src/images/DSC_0040_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0001_original.jpeg",
+                thumbnail: "/src/images/DSC_0001_original.jpeg",
+            },
+            {
+                original: "/src/images/DSC_0002_original.jpeg",
+                thumbnail: "/src/images/DSC_0002_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0003_original.jpeg",
+                thumbnail: "/src/images/DSC_0003_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0038_original.jpeg",
+                thumbnail: "/src/images/DSC_0038_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0039_original.jpeg",
+                thumbnail: "/src/images/DSC_0039_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0040_original.jpeg",
+                thumbnail: "/src/images/DSC_0040_original.jpeg"
             }
         ]
     },

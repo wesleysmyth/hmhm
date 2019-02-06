@@ -1,4 +1,6 @@
 @import "../../node_modules/react-typist/dist/Typist.css";
+@import "../../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+@import "./mixins.scss";
 
 .Typist {
     display: flex;
@@ -6,4 +8,44 @@
 
 .Cursor {
     color: red;    
+}
+
+// custom styles for react-image-gallery
+.image-gallery-thumbnails-wrapper {
+    top: 0;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    @include fadeIn(1s);
+}
+
+.image-gallery-thumbnails {
+    overflow: auto;
+    padding: 5px 0;
+}
+
+.image-gallery-thumbnails-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    a:hover {
+        .image-gallery-thumbnail-label {
+            display: inline;
+            @include fadeIn(1s);
+        }
+    }
+}
+
+.image-gallery-thumbnail {
+    width: 24%;
+    padding: 1.2%;
+}
+
+.image-gallery-thumbnail-label {
+    display: none;
+    font-size: 2.5em;
 }
