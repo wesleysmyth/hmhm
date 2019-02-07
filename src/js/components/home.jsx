@@ -15,10 +15,9 @@ export default class Home extends Component {
         return (
             <div className="home">
                 <header className="home__header">
-                    <h2 className="home__title" onClick={this.goHome}>HALFMANHALFMACHINE</h2>
-                    <div className="menu" onClick={this.toggleMenu}>
-                        <h4 className="menu--title">// MENU //</h4>
-                    </div>
+                    <h3 className="home__title" onClick={this.goHome}>HALFMANHALFMACHINE</h3>
+                    <img className="home__header--logo" src="/src/images/hmhm-logo-TOP-large.png" />
+                    <img onClick={this.toggleMenu} className="menu--button" src="/src/images/hmhm-menu-button-transp.png" />
                 </header>
                 {menuOpen &&
                     <aside className={`menu__dropdown ${dropdownClass}`}>
@@ -58,28 +57,5 @@ export default class Home extends Component {
     @autobind
     toggleMenu() {
         this.props.toggleMenu();
-    }
-
-    registerMenuToggle() {
-        const $menu = $(".menu")
-        const $dropdown = $(".menu__dropdown");
-
-        // // show the dropdown menu on hover
-        // $menu.hover(() => {
-        //     this.setState({ menuOpen: true });
-        // }, ({ relatedTarget }) => {
-        //     const targetIsDropdown = relatedTarget && (relatedTarget.className === "menu--option" || relatedTarget.className.match(/menu__dropdown/) || relatedTarget.className.match(/player/));
-
-        //     if (!targetIsDropdown) {
-        //         this.setState({ menuOpen: false });
-        //     }
-        // });
-
-        // hide the menu on dropdown leave
-        // $dropdown.hover(() => {}, ({ relatedTarget }) => {
-        //     if (relatedTarget && relatedTarget.className !== "menu") {
-        //         this.setState({ menuOpen: false });
-        //     }
-        // });
     }
 }

@@ -39,12 +39,10 @@ export default class Player extends Component {
                         loop={true}
                         autoPlay={true}
                         controlsList="nodownload"
-                        // onMouseOver={this.toggleControls}
-                        // onMouseLeave={this.toggleControls}
-                        onClick={this.togglePlay}
+                        onMouseOver={this.toggleControls}
+                        onMouseLeave={this.toggleControls}
                         src={currentVideo.src}>
                     </video>
-                    <h6>Watermark</h6>
                 </div>
                 <div className="player__data">
                     <footer className="player__footer">
@@ -56,7 +54,6 @@ export default class Player extends Component {
                             </h3>
                         </div>
                         <div className="player__footer--text">
-                            <img className="logo" src="/src/images/logos-02.png" />
                             {this.state.showTyping &&
                                 <Typist
                                     key={this.state.currentChapter}
@@ -125,7 +122,7 @@ export default class Player extends Component {
         this.timer = setInterval(() => this.setState({ currentTime: video.currentTime }), 50);
     }
 
-    stopTracking() {
+    stopTracking(video) {
         clearInterval(this.timer);
     }
 
@@ -202,7 +199,7 @@ export default class Player extends Component {
         }
 
         return (
-            <div className="player__footer__subconcious-text">
+            <div className="player__footer__subconscious-text">
                 {elements.length ? elements.map((element, i) => {
                     const isLink = element.match(/http/);
 
@@ -261,18 +258,6 @@ export default class Player extends Component {
         const { currentVideo } = this.props;
         const video = document.querySelector(`#player--video${currentVideo.id}`);
         return video;
-    }
-
-    @autobind
-    togglePlay() {
-        const video = this.getHTMLVideo();
-        const paused = video.paused;
-
-        if (paused) {
-            this.play();
-        } else {
-            this.pause();
-        }
     }
 
     @autobind

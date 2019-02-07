@@ -5,16 +5,17 @@
 @import "./mixins.scss";
 @import "./animations.scss";
 @import "./vendor.scss";
+@import "./fonts.scss";
 
 html {
-    background-color: $black;
-    color: $white;
-    font-family: Menlo, "Helvetica Neue", sans-serif;
+    background-color: $grey;
+    color: $black;
+    font-family: "HelveticaNeue-CondensedBold", Menlo, "Helvetica Neue", sans-serif;
     text-transform: uppercase;
 }
 
 body {
-    margin: 0 10%;
+    margin: 0 12%;
 }
 
 html, body, #root, .home {
@@ -27,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
     &:link, &:visited {
-        color: $white;
+        color: $black;
     }
 }
 
@@ -37,49 +38,51 @@ a {
     opacity: 0.5;
 }
 
-video::-webkit-media-controls-panel {
-    background-color: black;
-}
-
 video::-internal-media-controls-download-button {
     display: none;
 }
 
 .home__header {
     width: 100%;
-    height: 60px;
     display: flex;
-    justify-content: space-between;
     position: relative;
     z-index: 1;
     top: 0;
+    margin-bottom: 0.5em;
 
     .home__title {
-        margin-top: 15px;
+        margin-top: auto;
         cursor: pointer;
-        font-size : 18px;
         letter-spacing: 2px;
+        position: absolute;
+        bottom: 0;
     }
 
-    .menu {
+    .home__header--logo {
+        width: 12%;
+        height: 12%;
+        max-width: 130px;
+        margin: 0.3em auto;
+    }
+
+    .menu--button {
         cursor: pointer;
-    }
-
-    .menu--title {
-        margin-top: 20px;
+        margin-top: auto;
+        position: absolute;
+        right: 0;
+        bottom: 0;
     }
 }
 
 .menu__dropdown {
     display: flex;
-    position: absolute;
-    z-index: 1000;
-    right: 10%;
     flex-direction: column;
-    width: 160px;
-    padding: 15px 15px 20px 15px;
-    margin: 6px;
-    background-color: $black;
+    position: absolute;
+    right: 12%;
+    z-index: 1000;
+    padding: 15px;
+    margin: 21px;
+    background-color: $grey-transparent;
     border-radius: 1px;
     @include fadeIn(0.6s);
 
@@ -92,13 +95,13 @@ video::-internal-media-controls-download-button {
         width: 100%;
         border: 0;
         height: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid $black;
     }
 
     .menu--option {
         cursor: pointer;
         text-decoration: none;
-        color: $white;
+        color: $black;
         font-family : Menlo;
         font-size: 10px;
         letter-spacing: 3px;
@@ -107,7 +110,7 @@ video::-internal-media-controls-download-button {
         &:hover {
             .menu--option-title {
                 text-decoration: underline;
-                text-decoration-color: $light-blue;
+                // text-decoration-color: $light-blue;
             }
         }
 
@@ -117,7 +120,7 @@ video::-internal-media-controls-download-button {
     }
 
     .asterisk {
-        color: $light-blue;
+        // color: $light-blue;
         margin-right: 10px;
     }
 }
@@ -125,6 +128,8 @@ video::-internal-media-controls-download-button {
 .player--video-container {
     display: flex;
     flex-direction: column;
+    padding: 1em;
+    border: 1px solid black;
 }
 
 .player--video {
@@ -149,7 +154,7 @@ video::-internal-media-controls-download-button {
 }
 
 .player__footer {
-    background-color: black;
+    background-color: $grey;
     margin-bottom: 20px;
     @include fadeIn(2s);
 }
@@ -161,20 +166,31 @@ video::-internal-media-controls-download-button {
     .timer {
         position: absolute;
         right: 0;
-        margin-right: 10%;
+        margin-right: 12%;
     }
 }
 
 .player__footer--text {
     display: flex;
-    margin-top: 20px;
-    font-size: 12px;
     line-height: 20px;
     text-align: justify;
-    text-transform: uppercase;
-    @include blueText;
+    font-family: monospace;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 20px;
+    padding-right: 10%;
+
+    .Typist {
+        border-left: 1px solid $black;
+        padding-left: 1em;
+        margin-left: 5%;
+    }
+    
+    // .player__footer__subconscious-text {
+        
+    // }
 
     & a {
-        color: $white;
+        color: $black;
     }
 }
