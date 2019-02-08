@@ -17,11 +17,6 @@
     animation: ease-in-out $time;
 }
 
-@mixin blueText() {
-    font-style: italic;
-    color: $light-blue;
-}
-
 @mixin invert($time) {
     -webkit-animation: invert $time; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: invert $time; /* Firefox < 16 */

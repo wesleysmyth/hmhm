@@ -30,7 +30,6 @@
     .magazine-library__tags--tag {
         margin: 0 5px;
         font-size: 0.7rem;
-        color: $light-blue;
         cursor: pointer;
         opacity: 0.9;
 
@@ -70,7 +69,7 @@
 
         &:hover {
             .video-library__videos--video-img {
-                @include invert(5s);
+                // @include invert(3s);
             }
         }
 
@@ -92,7 +91,7 @@
             text-align: center;
             cursor: pointer;
             align-self: flex-end;
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .video-library__videos--video-img,
@@ -123,7 +122,6 @@
         }
 
         .video-library__videos--video--time {
-            @include blueText;
             font-size: 8px;
             width: 100%;
             float: right;
@@ -149,7 +147,6 @@
 
         .video-library__videos--video--summary,
         .magazine-library__magazines--magazine--summary {
-            @include blueText;
             font-size: 10px;
             line-height: 2em;
             text-transform: none;

@@ -20,6 +20,8 @@ body {
 
 html, body, #root, .home {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,10 +46,8 @@ video::-internal-media-controls-download-button {
 
 .home__header {
     width: 100%;
-    display: flex;
     position: relative;
     z-index: 1;
-    top: 0;
     margin-bottom: 0.5em;
 
     .home__title {
@@ -56,13 +56,13 @@ video::-internal-media-controls-download-button {
         letter-spacing: 2px;
         position: absolute;
         bottom: 0;
+        left: 0;
     }
 
     .home__header--logo {
-        width: 12%;
-        height: 12%;
         max-width: 130px;
-        margin: 0.3em auto;
+        cursor: pointer;
+        margin-left: calc(50% - 65px); // 50% of the width of the section - 50% of the width of the img
     }
 
     .menu--button {
@@ -79,6 +79,7 @@ video::-internal-media-controls-download-button {
     flex-direction: column;
     position: absolute;
     right: 12%;
+    top: 90px;
     z-index: 1000;
     padding: 15px;
     margin: 21px;
@@ -123,6 +124,10 @@ video::-internal-media-controls-download-button {
         // color: $light-blue;
         margin-right: 10px;
     }
+}
+
+.home__wrapper {
+    flex: 1;
 }
 
 .player--video-container {
@@ -174,7 +179,7 @@ video::-internal-media-controls-download-button {
     display: flex;
     line-height: 20px;
     text-align: justify;
-    font-family: monospace;
+    font-family: Menlo;
     font-style: italic;
     font-size: 12px;
     margin-top: 20px;
@@ -185,12 +190,21 @@ video::-internal-media-controls-download-button {
         padding-left: 1em;
         margin-left: 5%;
     }
-    
-    // .player__footer__subconscious-text {
-        
-    // }
 
     & a {
         color: $black;
+    }
+}
+
+.footer {
+    font-family: Menlo;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    left: calc(100vw - 50% - 277px); // move the footer section 50% to the left of the entire screen, then move 50% of the width of the footer to the left
+    margin-bottom: 10px;
+
+    .footer-text.route {
+        cursor: pointer;
     }
 }
