@@ -27,7 +27,8 @@ export default class Home extends Component {
                 <header className="home__header">
                     <h3 className="home__title" onClick={this.goHome}>HALFMANHALFMACHINE</h3>
                     <img className="home__header--logo" src="/src/images/hmhm-logo-TOP-large.png" onClick={this.goHome} />
-                    <img onClick={this.toggleMenu} className="menu--button" src="/src/images/hmhm-menu-button-transp.png" />
+                    {/*<img  className="menu--button" src="/src/images/hmhm-menu-button-transp.png" />*/}
+                    <div onClick={this.toggleMenu} className="menu--button">+</div>
                 </header>
                 {menuOpen &&
                     <aside className={`menu__dropdown ${dropdownClass}`}>
@@ -59,11 +60,12 @@ export default class Home extends Component {
                     {children}
                 </div>
                 <footer className="footer">
-                    <div className="footer-wrapper">
+                    <div className="footer--wrapper">
+                    <hr className="footer--hr" />
                         {_.map(footerRoutes, (route, text, obj) => {
                             const bar = text === "VER.001" ? "" : "|";
                             const onClick = route ? () => browserHistory.push(`${route}`) : () => {};
-                            const className = route ? "footer-text route" : "footer-text";
+                            const className = route ? "footer--text route" : "footer--text";
 
                             return <span className={className} key={text} onClick={onClick}> {text} {bar}</span>
                         })}

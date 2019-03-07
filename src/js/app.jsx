@@ -23,8 +23,8 @@ const routes = (
                 <Route path="/films/:id" component={Player} />
             <Route path="/magazines" component={Magazines} />
                 <Route path="/magazines/:id" component={MagazineViewer} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
+            <Route path="/about" component={Player} />
+            <Route path="/contact" component={Player} />
             <Route path="*" component={Player} />
             <Redirect from="/*" to="/" />
         </Route>

@@ -4,6 +4,7 @@
 .video-library,
 .magazine-library {
     margin-top: 20px;
+    @include fadeIn(3s);
 
     hr {
         border: 0;
@@ -69,7 +70,7 @@
 
         &:hover {
             .video-library__videos--video-img {
-                // @include invert(3s);
+                @include invert(4s);
             }
         }
 

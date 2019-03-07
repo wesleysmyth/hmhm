@@ -67,10 +67,16 @@ video::-internal-media-controls-download-button {
 
     .menu--button {
         cursor: pointer;
-        margin-top: auto;
+        border-radius: 100%;
         position: absolute;
         right: 0;
         bottom: 0;
+        padding: 3px 0px 0px 10px;
+        width: 33px;
+        height: 33px;
+        background-color: rgba(54,53,54, 0.7);
+        color: $grey;
+        font-size: 20px;
     }
 }
 
@@ -128,6 +134,10 @@ video::-internal-media-controls-download-button {
 
 .home__wrapper {
     flex: 1;
+}
+
+.player {
+    @include fadeIn(3s);
 }
 
 .player--video-container {
@@ -204,7 +214,14 @@ video::-internal-media-controls-download-button {
     left: calc(100vw - 50% - 277px); // move the footer section 50% to the left of the entire screen, then move 50% of the width of the footer to the left
     margin-bottom: 10px;
 
-    .footer-text.route {
+    .footer--text.route {
         cursor: pointer;
+    }
+
+    .footer--hr {
+        border: $grey;
+        border-top: 1px dashed black;
+        width: 75%;
+        padding: 5px;
     }
 }
