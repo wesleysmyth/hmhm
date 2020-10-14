@@ -7,9 +7,9 @@ process.noDeprecation = true;
 var config = {
     entry: path.resolve(__dirname, "./src/js/app.jsx"),
     output: {
-        path: path.resolve(__dirname),
+        path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
-        publicPath: "/",
+        publicPath: process.env.NODE_ENV === "development" ? "/" : "./",
     },
     resolve: {
         extensions: [ ".js", ".jsx", ".json" ]

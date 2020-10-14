@@ -31,7 +31,7 @@ export default class FilmLibrary extends Component {
     }
 
     showVideo(id) {
-        browserHistory.push(`/film-library/${id}`);
+        browserHistory.push(`/new/film-library/${id}`);
     }
 
 }

@@ -11,7 +11,7 @@ const videos = [
         time: 323
     },
     {
-        src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/755/8/203777141/692482461.mp4?token=58c5d4f7_0x4891d52c4b2e327cb5ec92a65c461e2b66c6f5d8",
+        src: "https://vimeo.com/46cbda2c-ea72-466a-93e2-2074221ac902",
         title: "Paper",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -20,7 +20,7 @@ const videos = [
         time: 32873,
     },
     {
-        src: "/src/videos/don.mp4",
+        src: "./src/videos/don.mp4",
         title: "Another Title",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -84,6 +84,15 @@ const videos = [
                 text: "https://www.youtube.com/watch?v=SXeypq9dWAA"
             }
         ]
+    },
+    {
+        src: "./src/videos/twirling_fireworks.mp4",
+        title: "Fireworks",
+        summary: "Scientist  fdshjaklfdsa fdhsjaklfhdjkslaf jkdlsa jkfl dsjklaf djklsafhjkdajklsf jdksafkl dajsklf djksafkldsahjkfhdjklasfjk .",
+        imgSrc: "https://unsplash.it/300/200?random",
+        imgAlt: "Firework",
+        tags: [ "new", "shows", "fashion" ],
+        time: 894,
     },
     {
         src: "",

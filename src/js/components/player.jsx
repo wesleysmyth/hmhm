@@ -32,16 +32,17 @@ export default class Player extends Component {
         return (
             <main ref="player" className="player">
                 <div className="player--video-container">
-                    <img className="loading" src="/src/images/Eclipse.svg" />
+                    <img className="loading" src="./src/images/Eclipse.svg" />
                     <video
                         id={`player--video${currentVideo.id}`}
                         className="player--video"
                         loop={true}
                         autoPlay={true}
+                        muted={true}
+                        playsInline={true}
                         controlsList="nodownload"
-                        // onMouseOver={this.toggleControls}
-                        // onMouseLeave={this.toggleControls}
-                        onClick={this.togglePlay}
+                        controls={true}
+                        onMouseOver={this.togglePlay}
                         src={currentVideo.src}>
                     </video>
                     <h6>Watermark</h6>
@@ -56,7 +57,7 @@ export default class Player extends Component {
                             </h3>
                         </div>
                         <div className="player__footer--text">
-                            <img className="logo" src="/src/images/logos-02.png" />
+                            <img className="logo" src="./src/images/logos-02.png" />
                             {this.state.showTyping &&
                                 <Typist
                                     key={this.state.currentChapter}
@@ -93,6 +94,7 @@ export default class Player extends Component {
         video.addEventListener("error", this.videoError.bind(this, video));
         video.addEventListener("play", this.startTracking.bind(this, video));
         video.addEventListener("pause", this.stopTracking.bind(this, video));
+        document.addEventListener("click", () => video.muted = false);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -268,10 +270,9 @@ export default class Player extends Component {
         const video = this.getHTMLVideo();
         const paused = video.paused;
 
-        if (paused) {
+        if (paused && video.currentTime < 3) {
             this.play();
-        } else {
-            this.pause();
+            video.muted = false;
         }
     }
 
@@ -280,7 +281,7 @@ export default class Player extends Component {
         const video = this.getHTMLVideo();
 
         if (video) {
-            video.play();
+            return video.play();
         }
     }
 

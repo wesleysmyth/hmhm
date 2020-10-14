@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
-import FlipPage from "react-flip-page";
 import _ from "underscore";
 import { createTimer } from "../pureFunctions/time";
 import videos from "../data/videos";
@@ -125,7 +124,7 @@ export default class Library extends Component {
 
     showItem(id) {
         const prefix = this.props.type === "video" ? "film" : "magazine";
-        browserHistory.push(`/${prefix}-library/${id}`);
+        browserHistory.push(`/new/${prefix}-library/${id}`);
     }
 
 }

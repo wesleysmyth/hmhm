@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
-import FlipPage from "react-flip-page";
 import ImageGallery from 'react-image-gallery';
 import _ from "underscore";
 import magazines from "../data/magazines";
@@ -23,36 +22,24 @@ export default class MagazineViewer extends Component {
                     showPlayButton={false}
                     onThumbnailClick={this.hideThumbnails}
                     items={items} />
-                <button onClick={this.showThumbnails}>Click me</button>
-                {/*<FlipPage
-                    ref={component => this.flipPage = component}
-                    orientation="horizontal"
-                    flipOnTouch
-                    loopForever
-                    responsive
-                    /* 'uncutPages' can be included to override height restriction for images */
-                    /*width={((window.innerWidth * .80))}
-                    pageBackground="#000">
-                    {pages.map((page, i) => <img src={page.src} key={i} />)}
-                </FlipPage>*/}
+                <div className="thumbnail-wrapper" onClick={this.showThumbnails}>
+                    <div className="thumbnail" onClick={this.showThumbnails}></div>
+                    <div className="thumbnail" onClick={this.showThumbnails}></div>
+                    <div className="thumbnail" onClick={this.showThumbnails}></div>
+                    <div className="thumbnail" onClick={this.showThumbnails}></div>
+                </div>
             </div>
         );
     }
 
     componentDidMount() {
-        this.addPageListeners();
-    }
+        document.body.addEventListener("click", () => {
+            this.hideThumbnails();
+        });
 
-    addPageListeners() {
         document.body.addEventListener("keydown", e => {
-            const { keyCode } = e;
-            const right = keyCode === 39;
-            const left = keyCode === 37;
-
-            if (left) {
-                this.flipPage.gotoPreviousPage();
-            } else if (right) {
-                this.flipPage.gotoNextPage();
+            if (e.keyCode === 27) {
+                this.hideThumbnails();
             }
         });
     }
@@ -66,5 +53,4 @@ export default class MagazineViewer extends Component {
         const thumbnails = document.querySelector(".image-gallery-thumbnails-wrapper");
         thumbnails.style.display = "none";
     }
-
 }

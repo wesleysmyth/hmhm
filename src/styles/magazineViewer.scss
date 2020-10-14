@@ -1,3 +1,32 @@
 .magazine-viewer__title {
     margin: 0 0 20px;
 }
+
+.image-gallery {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.image-gallery-left-nav:hover, .image-gallery-right-nav:hover {
+    ::before {
+        color: rgba(124, 124, 124, 0.2);
+    }
+}
+
+.thumbnail {
+    height: 10px;
+    width: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    margin: 3px;
+    position: relative;
+    left: 5%;
+    cursor: pointer;
+}
+
+.thumbnail-wrapper {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 40px;
+    margin-left: 4.6%;
+}

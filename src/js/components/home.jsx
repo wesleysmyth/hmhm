@@ -24,23 +24,23 @@ export default class Home extends Component {
                     <aside className={`menu__dropdown ${dropdownClass}`}>
                         <img className="logo" src="/src/images/logos-03.png" />
                         <hr />
-                        <Link className="menu--option" to="/">
+                        <Link className="menu--option" to="/new">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Channel 001</span>
                         </Link>
-                        <Link className="menu--option" to="/film-library">
+                        <Link className="menu--option" to="/new/film-library">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Film Library</span>
                         </Link>
-                        <Link className="menu--option" to="/magazine-library">
+                        <Link className="menu--option" to="/new/magazine-library">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Magazines</span>
                         </Link>
-                        <Link className="menu--option" to="/information">
+                        <Link className="menu--option" to="/new/information">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Information</span>
                         </Link>
-                        <Link className="menu--option" to="/contact">
+                        <Link className="menu--option" to="/new/contact">
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Contact</span>
                         </Link>
@@ -52,34 +52,11 @@ export default class Home extends Component {
     }
 
     goHome() {
-        browserHistory.push(`/`);
+        browserHistory.push(`/new`);
     }
 
     @autobind
     toggleMenu() {
         this.props.toggleMenu();
-    }
-
-    registerMenuToggle() {
-        const $menu = $(".menu")
-        const $dropdown = $(".menu__dropdown");
-
-        // // show the dropdown menu on hover
-        // $menu.hover(() => {
-        //     this.setState({ menuOpen: true });
-        // }, ({ relatedTarget }) => {
-        //     const targetIsDropdown = relatedTarget && (relatedTarget.className === "menu--option" || relatedTarget.className.match(/menu__dropdown/) || relatedTarget.className.match(/player/));
-
-        //     if (!targetIsDropdown) {
-        //         this.setState({ menuOpen: false });
-        //     }
-        // });
-
-        // hide the menu on dropdown leave
-        // $dropdown.hover(() => {}, ({ relatedTarget }) => {
-        //     if (relatedTarget && relatedTarget.className !== "menu") {
-        //         this.setState({ menuOpen: false });
-        //     }
-        // });
     }
 }
