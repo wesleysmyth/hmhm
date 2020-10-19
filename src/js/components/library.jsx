@@ -124,7 +124,7 @@ export default class Library extends Component {
 
     showItem(id) {
         const prefix = this.props.type === "video" ? "film" : "magazine";
-        browserHistory.push(`/new/${prefix}-library/${id}`);
+        browserHistory.push(`/${global.productionPath}/${prefix}-library/${id}`);
     }
 
 }

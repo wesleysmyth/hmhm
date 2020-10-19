@@ -88,12 +88,12 @@ const magazines = [
         tags: [ "old", "weird" ],
         pages: [
             {
-                original: "/src/images/DSC_0001_original.jpeg",
-                thumbnail: "/src/images/DSC_0001_original.jpeg"
-            },
-            {
                 original: "/src/images/DSC_0002_original.jpeg",
                 thumbnail: "/src/images/DSC_0002_original.jpeg"
+            },
+            {
+                original: "/src/images/DSC_0001_original.jpeg",
+                thumbnail: "/src/images/DSC_0001_original.jpeg"
             },
             {
                 original: "/src/images/DSC_0003_original.jpeg",
@@ -120,16 +120,16 @@ const magazines = [
         tags: [ "new", "weird" ],
         pages: [
             {
+                original: "/src/images/DSC_0003_original.jpeg",
+                thumbnail: "/src/images/DSC_0003_original.jpeg"
+            },
+            {
                 original: "/src/images/DSC_0001_original.jpeg",
                 thumbnail: "/src/images/DSC_0001_original.jpeg"
             },
             {
                 original: "/src/images/DSC_0002_original.jpeg",
                 thumbnail: "/src/images/DSC_0002_original.jpeg"
-            },
-            {
-                original: "/src/images/DSC_0003_original.jpeg",
-                thumbnail: "/src/images/DSC_0003_original.jpeg"
             },
             {
                 original: "/src/images/DSC_0038_original.jpeg",
@@ -152,6 +152,10 @@ const magazines = [
         tags: [ "new", "something else", "weird" ],
         pages: [
             {
+                original: "/src/images/DSC_0038_original.jpeg",
+                thumbnail: "/src/images/DSC_0038_original.jpeg"
+            },
+            {
                 original: "/src/images/DSC_0001_original.jpeg",
                 thumbnail: "/src/images/DSC_0001_original.jpeg"
             },
@@ -162,10 +166,6 @@ const magazines = [
             {
                 original: "/src/images/DSC_0003_original.jpeg",
                 thumbnail: "/src/images/DSC_0003_original.jpeg"
-            },
-            {
-                original: "/src/images/DSC_0038_original.jpeg",
-                thumbnail: "/src/images/DSC_0038_original.jpeg"
             },
             {
                 original: "/src/images/DSC_0039_original.jpeg",
@@ -184,6 +184,10 @@ const magazines = [
         tags: [ "old", "hot" ],
         pages: [
             {
+                original: "/src/images/DSC_0039_original.jpeg",
+                thumbnail: "/src/images/DSC_0039_original.jpeg"
+            },
+            {
                 original: "/src/images/DSC_0001_original.jpeg",
                 thumbnail: "/src/images/DSC_0001_original.jpeg"
             },
@@ -198,10 +202,6 @@ const magazines = [
             {
                 original: "/src/images/DSC_0038_original.jpeg",
                 thumbnail: "/src/images/DSC_0038_original.jpeg"
-            },
-            {
-                original: "/src/images/DSC_0039_original.jpeg",
-                thumbnail: "/src/images/DSC_0039_original.jpeg"
             },
             {
                 original: "/src/images/DSC_0040_original.jpeg",
@@ -216,6 +216,10 @@ const magazines = [
         tags: [ "new", "hot" ],
         pages: [
             {
+                original: "/src/images/DSC_0040_original.jpeg",
+                thumbnail: "/src/images/DSC_0040_original.jpeg"
+            },
+            {
                 original: "/src/images/DSC_0001_original.jpeg",
                 thumbnail: "/src/images/DSC_0001_original.jpeg"
             },
@@ -234,10 +238,6 @@ const magazines = [
             {
                 original: "/src/images/DSC_0039_original.jpeg",
                 thumbnail: "/src/images/DSC_0039_original.jpeg"
-            },
-            {
-                original: "/src/images/DSC_0040_original.jpeg",
-                thumbnail: "/src/images/DSC_0040_original.jpeg"
             }
         ]
     },
@@ -247,6 +247,10 @@ const magazines = [
         summary: "Another fdhjsaklfhdjs afhjdklsahfj kdlahsjkfl djsklahfj kdlajsfkldhjksal fhjkds afjklhdjk salhfjk lhsafjk .",
         tags: [ "001" ],
         pages: [
+            {
+                original: "/src/images/DSC_0041_original.jpeg",
+                thumbnail: "/src/images/DSC_0041_original.jpeg"
+            },
             {
                 original: "/src/images/DSC_0001_original.jpeg",
                 thumbnail: "/src/images/DSC_0001_original.jpeg"

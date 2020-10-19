@@ -19,12 +19,12 @@ const routes = (
     <div>
         <Route path="/" component={Home}>
             <IndexRoute component={Player} />
-            <Route path="/new/film-library" component={Videos} />
-                <Route path="/new/film-library/:id" component={Player} />
-            <Route path="/new/magazine-library" component={Magazines} />
-                <Route path="/new/magazine-library/:id" component={MagazineViewer} />
-            <Route path="/new/information" component={Information} />
-            <Route path="/new/contact" component={Contact} />
+            <Route path={`/${global.productionPath}/film-library`} component={Videos} />
+                <Route path={`/${global.productionPath}/film-library/:id`} component={Player} />
+            <Route path={`/${global.productionPath}/magazine-library`} component={Magazines} />
+                <Route path={`/${global.productionPath}/magazine-library/:id`} component={MagazineViewer} />
+            <Route path={`/${global.productionPath}/information`} component={Information} />
+            <Route path={`/${global.productionPath}/contact`} component={Contact} />
             <Route path="*" component={Player} />
             <Redirect from="/*" to="/" />
         </Route>

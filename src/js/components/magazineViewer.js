@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { browserHistory } from "react-router";
 import ImageGallery from 'react-image-gallery';
-import _ from "underscore";
-import magazines from "../data/magazines";
 
 export default class MagazineViewer extends Component {
 
@@ -14,7 +11,7 @@ export default class MagazineViewer extends Component {
         });
 
         return (
-            <div className="magazine-viewer" style={{
+            <div id={id} className="magazine-viewer" style={{
                 height: window.innerHeight * .85
             }}>
                 <h3 className="magazine-viewer__title">{title}</h3>
@@ -46,11 +43,15 @@ export default class MagazineViewer extends Component {
 
     showThumbnails() {
         const thumbnails = document.querySelector(".image-gallery-thumbnails-wrapper");
-        thumbnails.style.display = "flex";
+        if (thumbnails) {
+            thumbnails.style.display = "flex";
+        }
     }
 
     hideThumbnails() {
         const thumbnails = document.querySelector(".image-gallery-thumbnails-wrapper");
-        thumbnails.style.display = "none";
+        if (thumbnails) {
+            thumbnails.style.display = "none";
+        }
     }
 }

@@ -4,7 +4,7 @@
   "description": "half man half machine",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV='production' webpack && npm run createDistDirs && npm run copyDistDirs",
+    "build": "NODE_ENV='production' webpack && npm run createDistDirs && npm run copyDistDirs && cp .htaccess ./dist",
     "createDistDirs": "mkdir ./dist/src && mkdir ./dist/src/videos && mkdir ./dist/src/images",
     "copyDistDirs": "cp -R ./src/videos/* ./dist/src/videos && cp -R ./src/images/* ./dist/src/images",
     "rebuild": "rm -rf dist && npm run build",
@@ -28,6 +28,7 @@
     "jquery": "^3.2.1",
     "lodash.get": "^4.4.2",
     "md5": "^2.2.1",
+    "pica": "^6.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.11",

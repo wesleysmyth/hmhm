@@ -24,23 +24,23 @@ export default class Home extends Component {
                     <aside className={`menu__dropdown ${dropdownClass}`}>
                         <img className="logo" src="/src/images/logos-03.png" />
                         <hr />
-                        <Link className="menu--option" to="/new">
+                        <Link className="menu--option" to={`/${global.productionPath}`}>
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Channel 001</span>
                         </Link>
-                        <Link className="menu--option" to="/new/film-library">
+                        <Link className="menu--option" to={`/${global.productionPath}/film-library`}>
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Film Library</span>
                         </Link>
-                        <Link className="menu--option" to="/new/magazine-library">
+                        <Link className="menu--option" to={`/${global.productionPath}/magazine-library`}>
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Magazines</span>
                         </Link>
-                        <Link className="menu--option" to="/new/information">
+                        <Link className="menu--option" to={`/${global.productionPath}/information`}>
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Information</span>
                         </Link>
-                        <Link className="menu--option" to="/new/contact">
+                        <Link className="menu--option" to={`/${global.productionPath}/contact`}>
                             <span className="asterisk">*</span>
                             <span className="menu--option-title">Contact</span>
                         </Link>
@@ -52,7 +52,7 @@ export default class Home extends Component {
     }
 
     goHome() {
-        browserHistory.push(`/new`);
+        browserHistory.push(`/${global.productionPath}`);
     }
 
     @autobind
