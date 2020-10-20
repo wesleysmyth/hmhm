@@ -53,12 +53,22 @@ export default class Library extends Component {
         const { items } = this.props;
 
         if (items.length !== prevProps.items.length) {
-            this.checkImages(prevProps);
+            this.showLoaders(this.props);
+            this.checkImages(this.props);
         }
     }
 
     componentWillUnmount() {
         this.props.filterTags("all");
+    }
+
+    showLoaders({ type }) {
+        const imgs = document.querySelectorAll(`.${type}-library__${type}s--${type}-img`);
+
+        imgs.forEach(img => {
+            const loader = document.getElementById(`loading ${img.id}`);
+            loader.style.display = "block";
+        });
     }
 
     checkImages({ type }) {
