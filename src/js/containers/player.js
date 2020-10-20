@@ -2,12 +2,12 @@ import { connect } from "react-redux";
 import { addPlayer, fetchMeta, fetchVideo } from "../actions/player";
 import Player from "../components/player";
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
-       playerId: state.player.playerId,
-       metaId: state.player.metaId,
-       currentVideo: state.player.currentVideo,
-       home: state.player.home
+        playerId: state.player.playerId,
+        metaId: state.player.metaId,
+        currentVideo: state.player.currentVideo,
+        home: state.player.home
     };
 }
 

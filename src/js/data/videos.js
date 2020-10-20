@@ -1,9 +1,9 @@
 import md5 from "md5";
-const pathPrefix = global.publicPath.slice(0, -1);
+const pathPrefix = `${global.publicPath.slice(0, -1)}/src/videos/`;
 
 const videos = [
     {
-        src: "https://vod-progressive.akamaized.net/exp=1603226896~acl=%2A%2F72173255.mp4%2A~hmac=1a82e41b5288150ecbd03c0bd3b895efe21163deb55059c8a5ab69f61010e372/vimeo-prod-skyfire-std-us/01/1375/1/31878065/72173255.mp4",
+        src: "AL-movie-picking-up-radio.mp4",
         title: "Pre-Launch 001",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
@@ -12,7 +12,7 @@ const videos = [
         time: 323
     },
     {
-        src: "https://vod-progressive.akamaized.net/exp=1603227512~acl=%2A%2F37988964.mp4%2A~hmac=fa1ef904a69f8fe30c19a59cb4a84055506e923446e67e7599344ca363ef9f18/vimeo-prod-skyfire-std-us/01/3810/0/19051451/37988964.mp4",
+        src: "6fe27bfe-66e4-40c8-bc94-524517f7c7ec.mp4",
         title: "Paper",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -21,7 +21,7 @@ const videos = [
         time: 32873,
     },
     {
-        src: `${pathPrefix}/src/videos/don.mp4`,
+        src: "don.mp4",
         title: "Another Title",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -87,7 +87,7 @@ const videos = [
         ]
     },
     {
-        src: `${pathPrefix}/src/videos/twirling_fireworks.mp4`,
+        src: "twirling_fireworks.mp4",
         title: "Fireworks",
         summary: "Scientist  fdshjaklfdsa fdhsjaklfhdjkslaf jkdlsa jkfl dsjklaf djklsafhjkdajklsf jdksafkl dajsklf djksafkldsahjkfhdjklasfjk .",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -96,7 +96,7 @@ const videos = [
         time: 894,
     },
     {
-        src: "",
+        src: "1192307_10200913370011554_18639_n.mp4",
         title: "Something Else",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -109,7 +109,7 @@ const videos = [
         }],
     },
     {
-        src: "",
+        src: "28299419_173954019894634_8143499421917642752_n.mp4",
         title: "Goldilocks",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -118,7 +118,7 @@ const videos = [
         time: 323
     },
     {
-        src: "",
+        src: "1303015_10200981346470923_13603_n.mp4",
         title: "Mad Scientist",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -131,7 +131,7 @@ const videos = [
         } ],
     },
     {
-        src: "https://player.vimeo.com/external/87899059.hd.mp4?s=8bebb1223baebfcffcdd63ef7e6452dcb7a1afc1&profile_id=119",
+        src: "2017-04-28.mov",
         title: "Girl",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -149,6 +149,7 @@ const videos = [
     }
 ].map(video => {
     video.id = md5(video.src);
+    video.src = `${pathPrefix}${video.src}`;
     return video;
 });
 

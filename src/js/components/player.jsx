@@ -5,7 +5,7 @@ import autobind from "autobind-decorator";
 import Typist from "react-typist";
 import videos from "../data/videos";
 import { createTimer } from "../pureFunctions/time";
-const homeVideoIndex = 2;
+const homeVideoIndex = 0;
 
 export default class Player extends Component {
 
