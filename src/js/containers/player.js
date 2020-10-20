@@ -7,6 +7,7 @@ function mapStateToProps(state, ownProps) {
        playerId: state.player.playerId,
        metaId: state.player.metaId,
        currentVideo: state.player.currentVideo,
+       home: state.player.home
     };
 }
 

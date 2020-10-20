@@ -5,6 +5,7 @@ import autobind from "autobind-decorator";
 import Typist from "react-typist";
 import videos from "../data/videos";
 import { createTimer } from "../pureFunctions/time";
+const homeVideoIndex = 2;
 
 export default class Player extends Component {
 
@@ -19,7 +20,7 @@ export default class Player extends Component {
     }
 
     render() {
-        const { metaId, currentVideo, currentVideo: { chapters } } = this.props;
+        const { metaId, currentVideo, currentVideo: { chapters }, location } = this.props;
         const { currentTime } = this.state;
         const currentChapter = chapters ? chapters[ this.state.currentChapter ] : null;
         const subText = this.createSubText(currentChapter);
@@ -28,6 +29,7 @@ export default class Player extends Component {
         const { hours, minutes, seconds, milliseconds } = createTimer(currentTime);
         const firstChapter = this.state.currentChapter === 0;
         const startDelay = firstChapter ? 2000 : 0;
+        const home = !location.pathname.match(/film-library/);
 
         return (
             <main ref="player" className="player">
@@ -75,7 +77,7 @@ export default class Player extends Component {
 
     componentDidMount() {
         const { fetchVideo, params, currentVideo } = this.props;
-        const videoId = _get(params, "id", videos[ 2 ].id);
+        const videoId = _get(params, "id", videos[ homeVideoIndex ].id);
         const video = this.getHTMLVideo();
         const currentVideoExists = _.keys(currentVideo).length;
         const textAvailable = currentVideoExists && _get(currentVideo, "chapters.length", 0);

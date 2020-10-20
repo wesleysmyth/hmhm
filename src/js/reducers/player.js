@@ -13,6 +13,12 @@ export default function homeReducer(state = {}, action) {
         const currentVideo = videos.find(video => video.id === action.id);
         return { ...state, currentVideo };
 
+    case "@@router/LOCATION_CHANGE":
+        const { pathname } = action.payload;
+        const home = pathname === `/${global.productionPath}/` || pathname === `/${global.productionPath}`;
+
+        return { ...state, home };
+
     default:
         return state;
     }
