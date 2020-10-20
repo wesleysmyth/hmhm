@@ -10,11 +10,11 @@
 }
 
 @mixin fadeOut($time) {
-    -webkit-animation: ease-in-out $time; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: ease-in-out $time; /* Firefox < 16 */
-    -ms-animation: ease-in-out $time; /* Internet Explorer */
-    -o-animation: ease-in-out $time; /* Opera < 12.1 */
-    animation: ease-in-out $time;
+    -webkit-animation: fadeout $time; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeout $time; /* Firefox < 16 */
+    -ms-animation: fadeout $time; /* Internet Explorer */
+    -o-animation: fadeout $time; /* Opera < 12.1 */
+    animation: fadeout $time;
 }
 
 @mixin blueText() {

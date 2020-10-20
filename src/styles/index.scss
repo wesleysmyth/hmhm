@@ -77,7 +77,6 @@ video::-internal-media-controls-download-button {
     margin: 6px;
     background-color: $black;
     border-radius: 1px;
-    @include fadeIn(0.6s);
 
     .logo {
         width: 40px;
@@ -116,6 +115,16 @@ video::-internal-media-controls-download-button {
         color: $light-blue;
         margin-right: 10px;
     }
+}
+
+.menu__open {
+    @include fadeIn(0.6s);
+}
+
+.menu__closed {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.6s linear, opacity 0.6s linear;
 }
 
 .player--video-container {

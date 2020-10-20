@@ -2,7 +2,7 @@ import md5 from "md5";
 
 const videos = [
     {
-        src: "https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/1607/8/208036501/710378441.mp4?token=58c5eb22_0xdfaed5cc298e843279287b464330a6cdb340f804",
+        src: "https://vod-progressive.akamaized.net/exp=1603226896~acl=%2A%2F72173255.mp4%2A~hmac=1a82e41b5288150ecbd03c0bd3b895efe21163deb55059c8a5ab69f61010e372/vimeo-prod-skyfire-std-us/01/1375/1/31878065/72173255.mp4",
         title: "Pre-Launch 001",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
@@ -11,7 +11,7 @@ const videos = [
         time: 323
     },
     {
-        src: "https://vimeo.com/46cbda2c-ea72-466a-93e2-2074221ac902",
+        src: "https://vod-progressive.akamaized.net/exp=1603227512~acl=%2A%2F37988964.mp4%2A~hmac=fa1ef904a69f8fe30c19a59cb4a84055506e923446e67e7599344ca363ef9f18/vimeo-prod-skyfire-std-us/01/3810/0/19051451/37988964.mp4",
         title: "Paper",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -20,7 +20,7 @@ const videos = [
         time: 32873,
     },
     {
-        src: "./src/videos/don.mp4",
+        src: "/src/videos/don.mp4",
         title: "Another Title",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -86,7 +86,7 @@ const videos = [
         ]
     },
     {
-        src: "./src/videos/twirling_fireworks.mp4",
+        src: "/src/videos/twirling_fireworks.mp4",
         title: "Fireworks",
         summary: "Scientist  fdshjaklfdsa fdhsjaklfhdjkslaf jkdlsa jkfl dsjklaf djklsafhjkdajklsf jdksafkl dajsklf djksafkldsahjkfhdjklasfjk .",
         imgSrc: "https://unsplash.it/300/200?random",

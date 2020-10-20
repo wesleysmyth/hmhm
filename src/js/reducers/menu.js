@@ -11,6 +11,9 @@ export default function menuReducer(state = defaultState, action) {
     case "TOGGLE_MENU":
         return { ...state, menuOpen: !state.menuOpen };
 
+    case "CLOSE_MENU":
+        return { ...state, menuOpen: false };
+
     default:
         return state;
     }

@@ -32,7 +32,7 @@ export default class Player extends Component {
         return (
             <main ref="player" className="player">
                 <div className="player--video-container">
-                    <img className="loading" src="./src/images/Eclipse.svg" />
+                    <img className="loading" src="/src/images/Eclipse.svg" alt="" />
                     <video
                         id={`player--video${currentVideo.id}`}
                         className="player--video"
@@ -57,7 +57,7 @@ export default class Player extends Component {
                             </h3>
                         </div>
                         <div className="player__footer--text">
-                            <img className="logo" src="./src/images/logos-02.png" />
+                            <img className="logo" src="/src/images/logos-02.png" alt="" />
                             {this.state.showTyping &&
                                 <Typist
                                     key={this.state.currentChapter}

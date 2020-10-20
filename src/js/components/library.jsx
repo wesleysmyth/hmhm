@@ -110,7 +110,7 @@ export default class Library extends Component {
 
                     return (
                         <div className={itemClass} key={index}>
-                            <img id={`loading ${uniqueId}`} className="loading" src="/src/images/Eclipse.svg" />
+                            <img id={`loading ${uniqueId}`} className="loading" src="/src/images/Eclipse.svg" alt="" />
                             <img id={uniqueId} className={`${itemClass}-img`} src={imgSrc} alt={imgAlt} onClick={this.showItem.bind(this, id)} />
                             <div className={`${itemClass}-data`}>
                                 <h5 className={`${itemClass}-title`} onClick={this.showItem.bind(this, id)}>{title}</h5>
@@ -123,7 +123,7 @@ export default class Library extends Component {
                             </div>
                             <hr />
                             <div className={`${itemClass}__summary-container`}>
-                                <img className="logo" src="/src/images/logos-02.png" />
+                                <img className="logo" src="/src/images/logos-02.png" alt="" />
                                 <p className={`${itemClass}--summary`}>{summary}</p>
                             </div>
                         </div>

@@ -3,3 +3,9 @@ export const toggleMenu = () => {
         type: "TOGGLE_MENU"
     };
 };
+
+export const closeMenu = () => {
+    return {
+        type: "CLOSE_MENU"
+    };
+};
