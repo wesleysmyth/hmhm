@@ -31,7 +31,7 @@ export default class MagazineViewer extends Component {
             return page;
         });
         const hash = parseInt(window.location.hash.slice(1), 10);
-        const startIndex = hash < items.length - 1 ? hash : 0;
+        const startIndex = hash < items.length ? hash : 0;
 
         return (
             <div id={id} className="magazine-viewer" style={{
