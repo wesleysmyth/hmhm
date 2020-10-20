@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ImageGallery from "react-image-gallery";
+import _ from "underscore";
 
 export default class MagazineViewer extends Component {
 
@@ -29,6 +30,8 @@ export default class MagazineViewer extends Component {
             page.thumbnailLabel = (`00${i}`).slice(-3);
             return page;
         });
+        const hash = parseInt(window.location.hash.slice(1), 10);
+        const startIndex = hash < items.length - 1 ? hash : 0;
 
         return (
             <div id={id} className="magazine-viewer" style={{
@@ -38,9 +41,15 @@ export default class MagazineViewer extends Component {
                 {loading && <img id={`loading ${id}`} className="loading" src="/src/images/Eclipse.svg" />}
                 <ImageGallery
                     showPlayButton={false}
+                    startIndex={startIndex}
                     onThumbnailClick={this.hideThumbnails}
                     items={items}
                     onImageLoad={() => this.setState({ loading: false })}
+                    onSlide={index => {
+                        if (_.isNumber(index) && !_.isNaN(index)) {
+                            window.location.hash = index;
+                        }
+                    }}
                 />
                 <div className="thumbnail-wrapper" onClick={this.showThumbnails}>
                     <div className="thumbnail" onClick={this.showThumbnails}></div>
