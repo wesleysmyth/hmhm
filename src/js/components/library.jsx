@@ -46,6 +46,7 @@ export default class Library extends Component {
     }
 
     componentDidMount() {
+        this.showLoaders(this.props);
         this.checkImages(this.props);
     }
 
