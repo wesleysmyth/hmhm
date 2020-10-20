@@ -135,6 +135,7 @@ video::-internal-media-controls-download-button {
 .player--video {
     cursor: pointer;
     width: 100%;
+    max-height: 80vh;
 }
 
 .player--video-error {
