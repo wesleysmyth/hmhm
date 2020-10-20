@@ -1,4 +1,5 @@
 import md5 from "md5";
+const pathPrefix = global.publicPath.slice(0, -1);
 
 const videos = [
     {
@@ -20,7 +21,7 @@ const videos = [
         time: 32873,
     },
     {
-        src: "/src/videos/don.mp4",
+        src: `${pathPrefix}/src/videos/don.mp4`,
         title: "Another Title",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
         imgSrc: "https://unsplash.it/300/200?random",
@@ -86,7 +87,7 @@ const videos = [
         ]
     },
     {
-        src: "/src/videos/twirling_fireworks.mp4",
+        src: `${pathPrefix}/src/videos/twirling_fireworks.mp4`,
         title: "Fireworks",
         summary: "Scientist  fdshjaklfdsa fdhsjaklfhdjkslaf jkdlsa jkfl dsjklaf djklsafhjkdajklsf jdksafkl dajsklf djksafkldsahjkfhdjklasfjk .",
         imgSrc: "https://unsplash.it/300/200?random",

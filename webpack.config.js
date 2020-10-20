@@ -2,7 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const productionPath = "new"
+const productionPath = "new";
+const publicPath = process.env.NODE_ENV === "development" ? "/" : `/${productionPath}/`;
 process.noDeprecation = true;
 
 var config = {
@@ -10,7 +11,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
-        publicPath: process.env.NODE_ENV === "development" ? "/" : `/${productionPath}/`,
+        publicPath,
     },
     resolve: {
         extensions: [ ".js", ".jsx", ".json" ]
@@ -88,7 +89,8 @@ var config = {
         }),
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
-            "global.productionPath": JSON.stringify(productionPath)
+            "global.productionPath": JSON.stringify(productionPath),
+            "global.publicPath": JSON.stringify(publicPath)
         })
     ],
     devServer: {
