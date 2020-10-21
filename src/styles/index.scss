@@ -41,6 +41,14 @@ video::-internal-media-controls-download-button {
     display: none;
 }
 
+video::-webkit-media-controls {
+    visibility: hidden;
+}
+
+video::-webkit-media-controls-enclosure {
+    visibility: visible;
+}
+
 .home__header {
     width: 100%;
     height: 60px;
