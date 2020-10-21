@@ -37,14 +37,17 @@ a {
     opacity: 0.5;
 }
 
+// hide video download button
 video::-internal-media-controls-download-button {
     display: none;
 }
 
+// hide video loading spinner
 video::-webkit-media-controls {
     visibility: hidden;
 }
 
+// show other video functions
 video::-webkit-media-controls-enclosure {
     visibility: visible;
 }
