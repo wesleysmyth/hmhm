@@ -29,7 +29,6 @@ export default class Player extends Component {
         const { hours, minutes, seconds, milliseconds } = createTimer(currentTime);
         const firstChapter = this.state.currentChapter === 0;
         const startDelay = firstChapter ? 2000 : 0;
-        const home = !location.pathname.match(/film-library/);
 
         return (
             <main ref="player" className="player">
@@ -138,6 +137,7 @@ export default class Player extends Component {
         const homeVideoId = videos[ homeVideoIndex ].id;
 
         this.removeEventListeners();
+        this.setState({ showTyping: false });
         this.props.fetchVideo(homeVideoId)
     }
 
