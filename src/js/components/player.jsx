@@ -103,6 +103,11 @@ export default class Player extends Component {
         const { currentVideo } = this.props;
         const textAvailable = _get(nextProps, "currentVideo.chapters.length", 0);
 
+        if (!this.props.home && nextProps.home) {
+            // reset to home page
+            return this.reset();
+        }
+
         if (currentVideo.id !== nextProps.currentVideo.id) {
             this.registerChapters(nextProps.currentVideo);
             this.setState({ currentVideo: nextProps.currentVideo });
@@ -114,6 +119,10 @@ export default class Player extends Component {
     }
 
     componentWillUnmount() {
+        this.removeEventListeners();
+    }
+
+    removeEventListeners() {
         const { currentVideo } = this.props;
         const htmlVideo = this.getHTMLVideo();
 
@@ -123,6 +132,13 @@ export default class Player extends Component {
         htmlVideo.removeEventListener("play", this.startTracking.bind(this, htmlVideo));
         htmlVideo.removeEventListener("pause", this.stopTracking.bind(this, htmlVideo));
         this.stopTracking();
+    }
+
+    reset() {
+        const homeVideoId = videos[ homeVideoIndex ].id;
+
+        this.removeEventListeners();
+        this.props.fetchVideo(homeVideoId)
     }
 
     startTracking(video) {
