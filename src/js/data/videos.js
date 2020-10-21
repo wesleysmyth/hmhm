@@ -3,24 +3,6 @@ const pathPrefix = `${global.publicPath.slice(0, -1)}/src/videos/`;
 
 const videos = [
     {
-        src: "AL-movie-picking-up-radio.mp4",
-        title: "Pre-Launch 001",
-        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
-        imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
-        imgAlt: "Alt 1",
-        tags: [ "new", "001" ],
-        time: 323
-    },
-    {
-        src: "6fe27bfe-66e4-40c8-bc94-524517f7c7ec.mp4",
-        title: "Paper",
-        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
-        imgSrc: "https://unsplash.it/300/200?random",
-        imgAlt: "Alt 2",
-        tags: [ "new", "shows", "fashion" ],
-        time: 32873,
-    },
-    {
         src: "don.mp4",
         title: "Another Title",
         summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
@@ -85,6 +67,24 @@ const videos = [
                 text: "https://www.youtube.com/watch?v=SXeypq9dWAA"
             }
         ]
+    },
+    {
+        src: "AL-movie-picking-up-radio.mp4",
+        title: "Pre-Launch 001",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
+        imgSrc: "https://html.com/wp-content/uploads/very-large-flamingo.jpg",
+        imgAlt: "Alt 1",
+        tags: [ "new", "001" ],
+        time: 323
+    },
+    {
+        src: "6fe27bfe-66e4-40c8-bc94-524517f7c7ec.mp4",
+        title: "Paper",
+        summary: "A mfmidsajf9ephw a9pfhd sahfd9sapdfu spafhidhsa klfhdisafiu pdhsap fhdis auhfp disahfip uadis pwned.",
+        imgSrc: "https://unsplash.it/300/200?random",
+        imgAlt: "Alt 2",
+        tags: [ "new", "shows", "fashion" ],
+        time: 32873,
     },
     {
         src: "twirling_fireworks.mp4",
