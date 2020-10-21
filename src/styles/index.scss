@@ -175,12 +175,6 @@ video::-webkit-media-controls-enclosure {
 .player__footer__meta {
     display: flex;
     justify-content: space-between;
-
-    .timer {
-        position: absolute;
-        right: 0;
-        margin-right: 10%;
-    }
 }
 
 .player__footer--text {
